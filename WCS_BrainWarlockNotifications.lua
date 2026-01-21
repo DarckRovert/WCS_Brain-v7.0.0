@@ -291,6 +291,10 @@ end
 
 -- Verificar Soul Shards
 function WarlockNotif:CheckSoulShards()
+    -- Evitar falsos positivos al loguear (dar tiempo a cargar bolsas)
+    if not self.safetyTimer then self.safetyTimer = GetTime() end
+    if GetTime() - self.safetyTimer < 10 then return end
+
     local count = self:CountSoulShards()
     local now = GetTime()
     
