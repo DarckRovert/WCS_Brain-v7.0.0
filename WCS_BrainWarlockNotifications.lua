@@ -446,25 +446,42 @@ function WarlockNotif:GetBuffTimeLeft(buffName, unit)
 end
 
 -- Contar Soul Shards
+-- Contar Soul Shards (FIXED)
 function WarlockNotif:CountSoulShards()
+    -- 1. Intentar API nativa (rápido y seguro)
+    if GetItemCount then
+        -- Verificar ambos idiomas por si acaso
+        local countEN = GetItemCount("Soul Shard") or 0
+        local countES = GetItemCount("Fragmento de alma") or 0
+        local total = countEN + countES
+        
+        -- Si encontramos shards por API, retornamos
+        if total > 0 then return total end
+        -- Si retorna 0, podría ser que la API falle o realmente tengamos 0. 
+        -- Hacemos fallback al escaneo manual solo para estar 100% seguros en clientes modificados.
+    end
+
+    -- 2. Fallback: Escaneo manual de bolsas
     local count = 0
     for bag = 0, 4 do
         for slot = 1, GetContainerNumSlots(bag) do
             local itemLink = GetContainerItemLink(bag, slot)
             if itemLink then
-                -- Buscar por Item ID 6265 (mas confiable que nombre)
-                -- El itemLink tiene formato |Hitem:6265:0:0:0|h[Soul Shard]|h
+                -- Método A: Buscar por ID 6265 (Infalible)
                 if string.find(itemLink, "6265") then
                     local _, itemCount = GetContainerItemInfo(bag, slot)
                     count = count + (itemCount or 1)
                 else
-                    -- Fallback: buscar por nombre (solo si GetItemInfo funciona)
-                    local itemName = GetItemInfo(itemLink)
-                    if itemName and (string.find(itemName, "Soul Shard") or string.find(itemName, "Fragmento de alma")) then
-                        local _, itemCount = GetContainerItemInfo(bag, slot)
-                        count = count + (itemCount or 1)
+                    -- Método B: Parsear nombre directo del link (evita GetItemInfo nil)
+                    local _, _, name = string.find(itemLink, "%[(.+)%]")
+                    if name then
+                        if name == "Soul Shard" or name == "Fragmento de alma" then
+                            local _, itemCount = GetContainerItemInfo(bag, slot)
+                            count = count + (itemCount or 1)
+                        end
                     end
-                end            end
+                end
+            end
         end
     end
     return count
