@@ -1,0 +1,166 @@
+## Interface: 11200
+## Title: |cFF9482C9WCS|r |cFF00FF00Brain|r - Cerebro Central Inteligente
+## Notes: Sistema de IA para Warlock - Exclusivo de El Sequito del Terror
+## Notes-esES: Sistema de IA para Warlock - Exclusivo de El Sequito del Terror
+## Author: Elnazzareno (DarckRovert)
+## X-Guild: El Sequito del Terror
+## Version: 7.0.0
+## SavedVariables: WCS_BrainSaved, WCS_BrainDQNButtonConfig, WCS_BrainThinkingButtonConfig, WCS_BrainButtonBarConfig, WCS_BrainMetricsSaved, WCS_BrainContextualSaved, WCS_BrainTutorialButtonSaved, WCS_ClanUI_SavedVars, WCS_BankData, WCS_PvPTrackerData, WCS_RaidManagerData, WCS_BrainLearningSaved
+## SavedVariablesPerCharacter: WCS_BrainCharSaved
+
+
+## ===========================================
+## ORDEN DE CARGA - Sistema Inteligente v6.7.0
+## ===========================================
+
+## HELPERS LUA 5.0 (Cargarse PRIMERO - usado por todo lo demás)
+WCS_Helpers.lua
+WCS_EventManager.lua
+WCS_ResourceManager.lua
+
+## FASE 3 - NUEVAS FEATURES v6.9.0
+WCS_BrainEventThrottle.lua
+WCS_BrainNotifications.lua
+WCS_BrainWarlockNotifications.lua
+WCS_BrainSavedVarsValidator.lua
+WCS_BrainSafety.lua
+
+## NUEVOS MODULOS v6.5.0
+WCS_BrainLogger.lua
+WCS_BrainCache.lua
+WCS_BrainLocale.lua
+WCS_BrainMemory.lua
+WCS_BrainMacros.lua
+WCS_BrainPvP.lua
+WCS_BrainPetChat.lua
+WCS_BrainAchievements.lua
+WCS_BrainTutorial.lua
+WCS_BrainTutorialUI.lua
+WCS_BrainTutorialButton.lua
+WCS_BrainProfilesEnhanced.lua
+WCS_BrainThinkingUI.lua
+WCS_BrainThinkingButton.lua
+WCS_BrainButtonBar.lua
+
+## v6.4.2 - NUEVAS CARACTERÍSTICAS AVANZADAS
+## - Sistema de Testing Automatizado (WCS_BrainTesting)
+## - Métricas Avanzadas de Rendimiento (WCS_BrainMetrics)
+## - Configuración Contextual Granular (WCS_BrainContextual)
+## - Integración con Addons Populares (WCS_BrainIntegrations)
+## - Compatibilidad total con Lua 5.0
+
+## NÚCLEO DEL SISTEMA
+WCS_SpellLocalization.lua
+WCS_SpellDB.lua
+WCS_SpellDB_Patch.lua
+WCS_BrainCore.lua
+WCS_Brain.lua
+WCS_BrainCleanup.lua
+
+## SISTEMAS DE IA
+WCS_BrainSim.lua
+WCS_BrainML.lua
+WCS_BrainDQN.lua
+WCS_BrainState.lua
+WCS_BrainReward.lua
+WCS_BrainActions.lua
+
+## NUEVOS MÓDULOS v6.4.2
+WCS_BrainTesting.lua
+WCS_BrainMetrics.lua
+WCS_BrainCombatLogger.lua
+WCS_BrainContextual.lua
+WCS_BrainIntegrations.lua
+WCS_BrainLearning.lua
+
+## TERRORMETER INTEGRATION v6.5.0
+WCS_BrainTerrorMeter.lua
+
+## INTEGRACIÓN DQN (debe cargarse ANTES de BrainAI)
+WCS_BrainIntegration.lua
+
+## SISTEMA DE DECISIONES (carga después de Integration)
+WCS_BrainAI.lua
+WCS_BrainSmartAI.lua
+WCS_BrainSmartAI_Integration.lua
+
+## CONTROLADOR DE COMBATE UNIFICADO v6.7.0
+WCS_BrainCombatCache.lua
+WCS_BrainCombatCache_GuardianExt.lua
+WCS_BrainCombatController.lua
+
+## SISTEMA DE EJECUCIÓN AUTOMÁTICA v1.0.0
+WCS_BrainAutoExecute.lua
+
+## CAPTURA AUTOMÁTICA
+WCS_BrainAutoCapture.lua
+
+## SISTEMA DE MASCOTAS
+WCS_BrainPetAI.lua
+WCS_BrainPetAICleanup.lua
+WCS_BrainPetAI_CoordinationEnhanced.lua
+WCS_BrainGuardianCombatLog.lua
+WCS_BrainPetAI_GuardianEnhanced.lua
+WCS_GuardianV2.lua
+WCS_BrainGuardianAlerts.lua
+WCS_BrainMajorDemonAlerts.lua
+WCS_BrainMajorDemons.lua
+WCS_BrainPetSocial.lua
+WCS_BrainPetEmotions.lua
+WCS_BrainPetLearning.lua
+
+WCS_BrainPetUI.lua
+
+
+## INTERFACES DE USUARIO
+WCS_BrainHUD.lua
+WCS_BrainUI.lua
+WCS_SequitoButton.lua
+WCS_BrainButton.lua
+WCS_BrainDQNUI.lua
+WCS_BrainDQNButton.lua
+WCS_BrainThoughts.lua
+WCS_BrainDiagnostics.lua
+
+## SISTEMA DE PERFILES v6.4.2
+WCS_BrainProfiles.lua
+WCS_BrainAutoProfiles.lua
+WCS_BrainProfilesButton.lua
+WCS_BrainProfilesUI.lua
+
+## UI DEL CLAN - EL SEQUITO DEL TERROR v1.0.0
+WCS_BrainClanUI.lua
+WCS_ClanPanel.lua
+WCS_WarlockResources.lua
+WCS_RaidManager.lua
+WCS_Statistics.lua
+WCS_Grimoire.lua
+WCS_SummonPanel.lua
+WCS_ClanBank.lua
+WCS_PvPTracker.lua
+
+## CORRECCIONES Y PARCHES
+
+
+
+WCS_Lua50_ErrorCheck.lua
+
+## ===========================================
+## MÓDULOS DE OPTIMIZACIÓN v6.4.2
+## ===========================================
+WCS_UpdateManager.lua
+WCS_Profiler.lua
+WCS_StringOptimizer.lua
+WCS_UIOptimizer.lua
+WCS_LazyLoader.lua
+
+## ===========================================
+## FASE 3 - NUEVAS FEATURES v6.9.0 - SESIÓN 2
+## ===========================================
+WCS_BrainDashboard.lua
+## WCS_BrainDashboard_Counters.lua  ## DESACTIVADO - Rompe funciones con hooks
+WCS_BrainDashboard_Debug.lua
+WCS_BrainDashboard_Test.lua
+WCS_BrainDashboard_Inspect.lua
+WCS_BrainWeakAuras.lua
+WCS_BrainBossMods.lua
