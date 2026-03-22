@@ -1,11 +1,11 @@
 --[[
     WCS_BrainPetUI.lua - Ventana de Gestion de Mascota
     Compatible con Lua 5.0 (WoW 1.12 / Turtle WoW)
-    Version 6.4.2 - Boton mejorado con luz indicadora y pulso
+    Version 8.0.0 - Boton mejorado con luz indicadora y pulso
 ]]--
 
 WCS_BrainPetUI = WCS_BrainPetUI or {}
-WCS_BrainPetUI.VERSION = "6.4.2"
+WCS_BrainPetUI.VERSION = "8.0.0"
 
 -- Variables locales para el boton
 local petPulseTimer = 0
@@ -19,11 +19,10 @@ WCS_BrainPetUI.buffIcons = {}       -- Iconos de buffs
 WCS_BrainPetUI.lowHealthWarned = false  -- Flag para advertencia de salud baja
 
 -- Colores (definidos antes de usarse)
-local PET_COLOR_PURPLE = {r=0.8, g=0.4, b=1.0}
+local PET_COLOR_PURPLE = {r=0.58, g=0.51, b=0.79}
 local PET_COLOR_GREEN = {r=0, g=1, b=0}
 local PET_COLOR_RED = {r=1, g=0, b=0}
 local PET_COLOR_CYAN = {r=0, g=0.8, b=1}
-
 
 -- Funcion para flash de color al cambiar modo IA
 function WCS_BrainPetUI:FlashModeChange()
@@ -2382,8 +2381,12 @@ initFrame:SetScript("OnEvent", function()
     if event == "PLAYER_LOGIN" or event == "PLAYER_ENTERING_WORLD" then
         if not WCS_BrainPetUI.initialized then
             WCS_BrainPetUI.initialized = true
-            WCS_BrainPetUI:CreatePetButton()
-            DEFAULT_CHAT_FRAME:AddMessage("|cff9370DB[WCS]|r PetUI Button cargado")
+            -- Guard: Solo crear boton para clases con mascotas persistentes
+            local _, cls = UnitClass("player")
+            if cls == "WARLOCK" or cls == "HUNTER" then
+                WCS_BrainPetUI:CreatePetButton()
+                DEFAULT_CHAT_FRAME:AddMessage("|cff9370DB[WCS]|r PetUI Button cargado")
+            end
         end
     elseif event == "UNIT_PET" or event == "UNIT_HEALTH" or event == "PLAYER_PET_CHANGED" then
         -- Forzar actualizacion del cache

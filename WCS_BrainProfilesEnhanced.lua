@@ -1,10 +1,10 @@
 -- WCS_BrainProfilesEnhanced.lua
 -- Sistema mejorado de perfiles con auto-switch y presets
--- Version: 6.5.0
+-- Version 8.0.0
 -- Author: Elnazzareno (DarckRovert)
 
 WCS_BrainProfilesEnhanced = {
-    VERSION = "6.5.0",
+    VERSION = "8.0.0",
     
     -- Configuracion
     Config = {

@@ -1,10 +1,10 @@
 -- WCS_BrainTutorialButton.lua
 -- Boton flotante para acceder al tutorial rapidamente
--- Version: 6.5.0
+-- Version 8.0.0
 -- Compatible con Lua 5.0 (WoW 1.12)
 
 WCS_BrainTutorialButton = {
-    VERSION = "6.5.0",
+    VERSION = "8.0.0",
     button = nil,
     isShowing = false
 }

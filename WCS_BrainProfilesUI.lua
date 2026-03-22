@@ -36,14 +36,15 @@ function WCS_BrainProfilesUI:Create()
     
     -- Backdrop
     mainFrame:SetBackdrop({
-        bgFile = "Interface\\DialogFrame\\UI-DialogBox-Background",
-        edgeFile = "Interface\\DialogFrame\\UI-DialogBox-Border",
+        bgFile = "Interface\\Tooltips\\UI-Tooltip-Background",
+        edgeFile = "Interface\\Tooltips\\UI-Tooltip-Border",
         tile = true,
-        tileSize = 32,
-        edgeSize = 32,
-        insets = {left = 11, right = 12, top = 12, bottom = 11}
+        tileSize = 16,
+        edgeSize = 16,
+        insets = { left = 4, right = 4, top = 4, bottom = 4 }
     })
-    mainFrame:SetBackdropColor(0, 0, 0, 0.95)
+    mainFrame:SetBackdropColor(0.04, 0.02, 0.08, 0.95)
+    mainFrame:SetBackdropBorderColor(0.58, 0.51, 0.79, 1)
     
     -- Titulo
     local title = mainFrame:CreateFontString(nil, "OVERLAY", "GameFontNormalLarge")
@@ -652,14 +653,15 @@ function WCS_BrainProfilesUI:ShowCreateDialog()
     dialog:SetFrameStrata("FULLSCREEN_DIALOG")
     
     dialog:SetBackdrop({
-        bgFile = "Interface\\DialogFrame\\UI-DialogBox-Background",
-        edgeFile = "Interface\\DialogFrame\\UI-DialogBox-Border",
+        bgFile = "Interface\\Tooltips\\UI-Tooltip-Background",
+        edgeFile = "Interface\\Tooltips\\UI-Tooltip-Border",
         tile = true,
-        tileSize = 32,
-        edgeSize = 32,
-        insets = {left = 11, right = 12, top = 12, bottom = 11}
+        tileSize = 16,
+        edgeSize = 16,
+        insets = { left = 4, right = 4, top = 4, bottom = 4 }
     })
-    dialog:SetBackdropColor(0, 0, 0, 0.95)
+    dialog:SetBackdropColor(0.04, 0.02, 0.08, 0.95)
+    dialog:SetBackdropBorderColor(0.58, 0.51, 0.79, 1)
     
     -- Titulo
     local title = dialog:CreateFontString(nil, "OVERLAY", "GameFontNormalLarge")
@@ -755,14 +757,15 @@ function WCS_BrainProfilesUI:ShowSaveDialog(profileName)
     dialog:SetFrameStrata("FULLSCREEN_DIALOG")
     
     dialog:SetBackdrop({
-        bgFile = "Interface\\DialogFrame\\UI-DialogBox-Background",
-        edgeFile = "Interface\\DialogFrame\\UI-DialogBox-Border",
+        bgFile = "Interface\\Tooltips\\UI-Tooltip-Background",
+        edgeFile = "Interface\\Tooltips\\UI-Tooltip-Border",
         tile = true,
-        tileSize = 32,
-        edgeSize = 32,
-        insets = {left = 11, right = 12, top = 12, bottom = 11}
+        tileSize = 16,
+        edgeSize = 16,
+        insets = { left = 4, right = 4, top = 4, bottom = 4 }
     })
-    dialog:SetBackdropColor(0, 0, 0, 0.95)
+    dialog:SetBackdropColor(0.04, 0.02, 0.08, 0.95)
+    dialog:SetBackdropBorderColor(0.58, 0.51, 0.79, 1)
     
     -- Titulo
     local title = dialog:CreateFontString(nil, "OVERLAY", "GameFontNormalLarge")

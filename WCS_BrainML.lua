@@ -1,5 +1,5 @@
 --[[
-    WCS_BrainML.lua - Sistema de Machine Learning v6.4.2
+    WCS_BrainML.lua - Sistema de Machine Learning v8.0.0
     Compatible con Lua 5.0 (WoW 1.12 / Turtle WoW)
     
     SISTEMAS INCLUIDOS:
@@ -11,7 +11,7 @@
 ]]--
 
 WCS_BrainML = WCS_BrainML or {}
-WCS_BrainML.VERSION = "6.4.2"
+WCS_BrainML.VERSION = "8.0.0"
 
 -- ============================================================================
 -- UTILIDADES LUA 5.0

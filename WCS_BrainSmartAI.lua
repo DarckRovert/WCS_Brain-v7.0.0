@@ -8,7 +8,7 @@ WCS_BrainSmartAI = {}
 -- CONFIGURACIÓN Y CONSTANTES
 -- ============================================
 
-local SMART_AI_VERSION = "6.7.0"
+local SMART_AI_VERSION = "8.0.0"
 local DEBUG_MODE = false
 
 -- Constantes de combate

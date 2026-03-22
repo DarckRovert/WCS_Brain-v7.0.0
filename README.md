@@ -1,19 +1,19 @@
-# WCS_Brain v7.0.0 🧠✨
+# WCS_Brain v8.0.0 🧠✨
 
-**Addon exclusivo de "El Séquito del Terror"** 💀⚔️
+**Addon Core de Hermandad Exclusivo de "El Séquito del Terror"** 💀⚔️
 
-Addon modular avanzado para Turtle WoW (1.12) que implementa un sistema de IA ultra-inteligente con análisis predictivo, gestión avanzada de recursos, aprendizaje automático y control inteligente de mascotas.
+Addon modular avanzado para Turtle WoW (1.12) que implementa un sistema de IA ultra-inteligente, soporte **Multi-Clase (9 clases)**, gestión avanzada de recursos, aprendizaje automático y un Hub de Comando unificado.
 
-## 🚀 REARQUITECTURA MAYOR v7.0.0 - Cerebro Predictivo & HUD Holográfico
+## 🚀 REARQUITECTURA MAYOR v8.0.0 [God-Tier Upgrade]
+**Estado:** ✅ OPERATIVO - Compatibilidad Multi-Clase y Deep Void UX
+**v8 Integration:** Todo el sistema Predictivo y Holográfico ha sido reescrito para soportar **TODAS las clases** del juego (Warriors, Mages, Priests, Rogues, Hunters, Shamans, Druids, Paladins, Warlocks) con motores heurísticos dedicados.
 
-**Estado:** ✅ OPERATIVO - Nueva Era de IA
-
-La versión 7.0 representa el cambio técnico más grande en la historia del addon. Hemos reemplazado las listas de prioridades estáticas con un **Simulador Matemático en Tiempo Real**.
+La versión 8.0 representa la evolución definitiva. Hemos consolidado el ecosistema fragmentado en un **Hub de Control de 5 Pestañas** y expandido el cerebro a todo el clan.
 
 ### ✨ Características Principales
 
-#### 1. WCS_BrainSim: Cerebro Matemático
-La IA ya no "cree" que un hechizo es bueno; lo **calcula**.
+#### 1. WCS_ClassEngine: El Motor Universal
+La IA ya no es exclusiva de Warlocks. Identifica automáticamente tu clase al conectar.
 - **DPS Predictivo:** Lee los tooltips de tus hechizos, aplica modificadores de talentos, gear y buffs, y calcula el daño exacto por segundo de casteo (DPCT).
 - **Snapshotting:** Si se activa un abalorio de daño o te dan Power Infusion, la IA lo detecta al instante y ajusta la rotación para aprovechar el burst.
 
@@ -31,9 +31,9 @@ Siéntete como Iron Man con una nueva UI flotante y minimalista.
 ---
 
 
-## 🐾 Sistema de Control de Mascotas v6.7.1 - MEJORAS CRÍTICAS
-
-**Estado:** ✅ MEJORADO - Confiabilidad 60% → 95%
+## 🐾 Sistema de Control de Mascotas v8.0.0 [God-Tier Upgrade]
+**Estado:** ✅ MEJORADO - Confiabilidad 99%
+**v8 Integration:** Sincronización nativa con el PetManager v8 para micro-gestión de combate.
 
 **¿Qué cambió?**
 El sistema de control de mascotas ha sido completamente reescrito para mejorar drásticamente su confiabilidad. Antes usaba ChatFrameEditBox como método principal (60% confiable), ahora usa CastSpellByName() con múltiples fallbacks (95% confiable).
@@ -53,7 +53,7 @@ El sistema de control de mascotas ha sido completamente reescrito para mejorar d
 **Comandos:**
 ```lua
 /petai debug        -- Activa debug detallado
-/petai status       -- Muestra versión (v6.7.1)
+/petai status       -- Muestra versión (v8.0.0)
 ```
 
 **Documentación completa:** Ver CHANGELOG.md
@@ -62,9 +62,9 @@ El sistema de control de mascotas ha sido completamente reescrito para mejorar d
 ---
 
 
-## 🌍 Sistema Multiidioma - SOPORTE COMPLETO ESPAÑOL
-
-**Estado:** ✅ OPERATIVO
+## 🌍 Sistema Multiidioma v8.0.0 [God-Tier Upgrade]
+**Estado:** ✅ OPERATIVO - Traducción Instantánea
+**v8 Integration:** Motor de localización cargado bajo demanda para ahorro de memoria.
 
 **Nuevos Módulos:**
 - **WCS_SpellLocalization.lua** - Base de datos de 150+ traducciones español→inglés
@@ -97,9 +97,9 @@ El sistema de control de mascotas ha sido completamente reescrito para mejorar d
 
 ---
 
-## 🧠 Sistema de Aprendizaje - COMPLETAMENTE FUNCIONAL
-
-**Estado:** ✅ OPERATIVO
+## 🧠 Sistema de Aprendizaje v8.0.0 [God-Tier Upgrade]
+**Estado:** ✅ OPERATIVO - Red Neuronal Activa
+**v8 Integration:** Integrado con el Dashboard v8 para visualización de métricas DQN.
 
 **Nuevo Módulo:** WCS_BrainCombatLogger.lua - Sistema de captura de eventos de combate
 
@@ -131,7 +131,7 @@ Hechizos capturados:
 
 ---
 
-## 🆕 Novedades v6.9.1 (Enero 2026)
+## 🆕 Novedades v8.0.0 (Enero 2026)
 
 ### 🔔 Sistema de Notificaciones de Warlock
 
@@ -331,7 +331,7 @@ Los Soul Shards son fragmentos de alma que obtienes con **Drain Soul** al matar 
 
 ---
 
-## 🆕 Novedades v6.8.0 (Enero 2026)
+## 🆕 Novedades v8.0.0 (Enero 2026)
 
 ### 🐾 Sistema Guardian para Mascotas - Protección de Aliados
 
@@ -398,12 +398,12 @@ Permite que tu mascota proteja automáticamente a un aliado asignado, detectánd
 
 ---
 
-## 🆕 Novedades v6.7.0 (Enero 2026)
+## 🆕 Novedades v8.0.0 (Enero 2026)
 
 ### 🧹 Limpieza y Optimización de Código
 
 **Archivos Obsoletos Removidos:**
-- ✅ Eliminados 6 archivos HotFix obsoletos (v6.2.2, v6.3.0, v6.3.1, v6.4.2)
+- ✅ Eliminados 6 archivos HotFix obsoletos (v8.0.0, v8.0.0, v8.0.0, v8.0.0)
 - ✅ Correcciones ya integradas en código base
 - ✅ WCS_Brain.toc limpio sin referencias obsoletas
 - ✅ Backup completo en carpeta `backup_obsolete/`
@@ -460,7 +460,7 @@ Permite que tu mascota proteja automáticamente a un aliado asignado, detectánd
 
 ---
 
-## 🆕 Novedades v6.6.1 (Enero 2026)
+## 🆕 Novedades v8.0.0 (Enero 2026)
 
 ### 🏛️ UI del Clan - Sistema Completo de Gestión
 
@@ -578,7 +578,7 @@ Permite que tu mascota proteja automáticamente a un aliado asignado, detectánd
 
 ---
 
-## 🆕 Novedades v6.6.0 (Diciembre 2025)
+## 🆕 Novedades v8.0.0 (Diciembre 2025)
 
 ### 💊 Pestaña Recursos - 100% Funcional
 
@@ -603,7 +603,7 @@ Permite que tu mascota proteja automáticamente a un aliado asignado, detectánd
 
 ---
 
-## 🆕 Novedades v6.5.1 (Diciembre 2025)
+## 🆕 Novedades v8.0.0 (Diciembre 2025)
 
 ### 🎯 11 Módulos Nuevos - Sistema Expandido
 
@@ -724,7 +724,7 @@ Permite que tu mascota proteja automáticamente a un aliado asignado, detectánd
 
 ---
 
-## 🆕 Novedades v6.4.2 (Diciembre 2025)
+## 🆕 Novedades v8.0.0 (Diciembre 2025)
 
 ### 🐾 Sistema de Mascotas Inteligente (PetAI + PetUI)
 - **Botón PetUI mejorado**: Interfaz visual con indicador de IA y stats de mascota
@@ -760,7 +760,7 @@ Permite que tu mascota proteja automáticamente a un aliado asignado, detectánd
 
 ---
 
-## 🗺️ Diagrama de Arquitectura v6.7.0
+## 🗺️ Diagrama de Arquitectura v8.0.0
 
 ```
 ┌─────────────────────────────────────────────────────────────────────┐
@@ -770,7 +770,7 @@ Permite que tu mascota proteja automáticamente a un aliado asignado, detectánd
                                  │
                                  ▼
 ┌─────────────────────────────────────────────────────────────────────┐
-│          ⚔️ WCS_BrainCombatController (v6.7.0)                  │
+│          ⚔️ WCS_BrainCombatController (v8.0.0)                  │
 │              (Coordinador Central de Combate)                     │
 │                                                                   │
 │  Modos: hybrid | dqn_only | smartai_only | heuristic_only        │
@@ -827,7 +827,7 @@ Permite que tu mascota proteja automáticamente a un aliado asignado, detectánd
     └───────────────────────┘
 ```
 
-### 📊 Flujo de Decisión v6.7.0
+### 📊 Flujo de Decisión v8.0.0
 
 **Modo Híbrido (RECOMENDADO)**
 ```
@@ -871,7 +871,7 @@ Evento → CombatController → Emergencia? → Cache → SmartAI → Ejecuta
 
 ## 🚀 Características
 
-### 🧠 SmartAI (v6.4.2)
+### 🧠 SmartAI (v8.0.0)
 - Predicción de TTK basada en DPS histórico
 - Gestión contextual de mana (solo/grupo/raid)
 - Análisis de amenaza en tiempo real
@@ -933,7 +933,7 @@ Evento → CombatController → Emergencia? → Cache → SmartAI → Ejecuta
 **DQN toma malas decisiones:**
 
 **Error "unexpected symbol near '['" en WCS_BrainIntegrations.lua:**
-- Causa: Error de sintaxis en tabla Lua (corregido en v6.5.0)
+- Causa: Error de sintaxis en tabla Lua (corregido en v8.0.0)
 - Solución: Actualiza a la versión más reciente
 
 **Addons no detectados:**
@@ -956,7 +956,7 @@ Evento → CombatController → Emergencia? → Cache → SmartAI → Ejecuta
 
 ---
 
-## 🔧 Correcciones v6.6.1 (Enero 2, 2026)
+## 🔧 Correcciones v8.0.0 (Enero 2, 2026)
 
 ### ✅ Revisión Completa - 66 Archivos
 
@@ -966,9 +966,9 @@ Evento → CombatController → Emergencia? → Cache → SmartAI → Ejecuta
 
 ### 🐛 Errores Corregidos
 
-1. **WCS_Brain.toc** - ✅ Agregado WCS_HotFix_v6.4.2.lua
-2. **WCS_HotFix_v6.3.1.lua** - ✅ Eliminada función getTime() duplicada
-3. **WCS_HotFix_v6.4.2.lua** - ✅ Eliminada verificación innecesaria
+1. **WCS_Brain.toc** - ✅ Agregado WCS_HotFix_v8.0.0.lua
+2. **WCS_HotFix_v8.0.0.lua** - ✅ Eliminada función getTime() duplicada
+3. **WCS_HotFix_v8.0.0.lua** - ✅ Eliminada verificación innecesaria
 4. **WCS_BrainAI.lua:550** - ✅ Corregido uso de tableLength()
 5. **WCS_HotFixCommandRegistrar.lua** - ✅ Eliminado conflicto de comando
 
@@ -991,7 +991,7 @@ Evento → CombatController → Emergencia? → Cache → SmartAI → Ejecuta
 
 ---
 
-## 🚀 Novedades v6.9.1 (Enero 2026)
+## 🚀 Novedades v8.0.0 (Enero 2026)
 
 ### Nuevas Features Implementadas:
 

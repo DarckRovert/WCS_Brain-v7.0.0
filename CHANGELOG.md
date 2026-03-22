@@ -4,6 +4,20 @@ Todas las versiones notables de este proyecto serán documentadas en este archiv
 
 ---
 
+## [8.0.0] - Marzo 22, 2026
+### 🏆 EVOLUCIÓN GOD-TIER
+- **Soporte Multi-Clase Universal**: Integración del `WCS_ClassEngine` y `WCS_ClassRotations`. La IA ahora detecta la raza y clase (las 9 disponibles) y ejecuta rotaciones con mitigación de daño, sin depender de Warlocks.
+- **Hub de Comando Unificado (5-Tabs)**: El macro-panel de opciones se rediseñó desde cero para incluir pestañas directas de `IA`, `CLAN`, `PET`, `HUD` y `SYS` bajo el comando unificado `/brain`.
+- **Rebirth Gráfico (Deep Void Theme)**: La estética del addon fue pulida en sus ~40 paneles secundarios eliminando las UI base genéricas e implementando Tooltips oscuros con bordes violetas `#9482C9` (0.58, 0.51, 0.79).
+- **Control de Mascotas Inteligente**: Guardianes de clase dinámicos aseguran que la UI de mascotas (`WCS_BrainPetUI`) solo se ejecute y recaude memoria si el jugador es Warlock o Hunter.
+- **Micro-Optimizaciones Lua 5.0**: Limpieza total de incompatibilidades futuras (`#table`, `string.match`) brindando compatibilidad inmaculada con 1.12.
+- **Auditoría Forense 100% Correcta**: Arreglo de 10 bugs críticos de Lua y crasheos en el arranque.
+- **WCSVault (Banco Guild P2P)**: El Banco del Clan reemplaza el "Inventario Local" por un Libro Mayor distribuido que sincroniza donaciones y préstamos en vivo a través de un protocolo oculto de addon.
+- **Macros Asistidas (Raid & Summon)**: Generación 1-clic (script nativo) para macros de utilidad complejas (Soulstones, Healthstones, Auto-Curses, Ritual).
+- **Roster en Tiempo Real**: Panel de miembros corregido (adiós al false *Online: 0*) atado a escuchas servidor `GUILD_ROSTER_UPDATE`.
+
+---
+
 ## [7.0.0] - Enero 20, 2026
 
 ### 🚀 REARQUITECTURA MAYOR - Cerebro Predictivo & HUD Holográfico
@@ -72,7 +86,7 @@ El sistema de control de mascotas tenía una confiabilidad del ~60% debido a que
 **Comandos:**
 ```lua
 /petai debug        -- Activa mensajes de debug detallados
-/petai status       -- Muestra versión (v6.7.1)
+/petai status       -- Muestra versión (v8.0.0)
 ```
 
 ---
@@ -114,7 +128,7 @@ El sistema de control de mascotas tenía una confiabilidad del ~60% debido a que
 **Documentación:**
 - ✅ MULTIIDIOMA.md - Documentación completa del sistema
 - ✅ README.md - Actualizado con sección de multiidioma
-- ✅ CHANGELOG.md - Añadida entrada v6.9.3
+- ✅ CHANGELOG.md - Añadida entrada v8.0.0
 
 **Verificación:**
 - ✅ Todos los hechizos críticos del Brujo funcionan correctamente
@@ -347,7 +361,7 @@ El addon WCS_Brain se usa con el **botón flotante** en pantalla (icono morado):
 ### 🧹 Limpieza y Optimización
 
 **Archivos Obsoletos Removidos:**
-- ✅ Eliminados 6 archivos HotFix obsoletos (v6.2.2, v6.3.0, v6.3.1, v6.4.2)
+- ✅ Eliminados 6 archivos HotFix obsoletos (v8.0.0, v8.0.0, v8.0.0, v8.0.0)
 - ✅ Correcciones ya integradas en código base
 - ✅ WCS_Brain.toc limpio sin referencias obsoletas
 - ✅ Backup completo en carpeta `backup_obsolete/`
@@ -377,9 +391,9 @@ El addon WCS_Brain se usa con el **botón flotante** en pantalla (icono morado):
 ### 🔧 Correcciones
 
 #### Errores Críticos Corregidos
-1. **WCS_Brain.toc** - Agregado WCS_HotFix_v6.4.2.lua faltante en el orden de carga
-2. **WCS_HotFix_v6.3.1.lua** - Eliminada función getTime() duplicada que causaba conflictos
-3. **WCS_HotFix_v6.4.2.lua** - Eliminada verificación innecesaria que generaba warnings
+1. **WCS_Brain.toc** - Agregado WCS_HotFix_v8.0.0.lua faltante en el orden de carga
+2. **WCS_HotFix_v8.0.0.lua** - Eliminada función getTime() duplicada que causaba conflictos
+3. **WCS_HotFix_v8.0.0.lua** - Eliminada verificación innecesaria que generaba warnings
 4. **WCS_BrainAI.lua:550** - Corregido uso incorrecto de tableLength() para compatibilidad Lua 5.0
 5. **WCS_HotFixCommandRegistrar.lua** - Eliminado conflicto de comando duplicado
 

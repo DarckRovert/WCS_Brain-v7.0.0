@@ -1,5 +1,5 @@
 --[[
-    WCS_BrainHUD.lua - Interfaz Holográfica "Iron Man" (v7.0)
+    WCS_BrainHUD.lua - Interfaz Holográfica "Iron Man" (v8.0)
     Compatible con Lua 5.0 (WoW 1.12 / Turtle WoW)
     
     Proporciona información visual inmediata cerca del personaje sobre
@@ -162,12 +162,38 @@ function WCS_BrainHUD:GetSpellTexture(spellName)
 end
 
 -- ============================================================================
+-- TOGGLE / SHOW / HIDE (Bug Fix: methods were missing)
+-- ============================================================================
+
+function WCS_BrainHUD:Show()
+    if not self.Frame then self:CreateHUD() end
+    self.Config.enabled = true
+    self.Frame:Show()
+    self.Frame:SetAlpha(self.Config.alpha)
+end
+
+function WCS_BrainHUD:Hide()
+    self.Config.enabled = false
+    if self.Frame then self.Frame:Hide() end
+end
+
+function WCS_BrainHUD:Toggle()
+    if self.Config.enabled then
+        self:Hide()
+        DEFAULT_CHAT_FRAME:AddMessage("|cFF9482C9[WCS HUD]|r Desactivado.")
+    else
+        self:Show()
+        DEFAULT_CHAT_FRAME:AddMessage("|cFF9482C9[WCS HUD]|r Activado.")
+    end
+end
+
+-- ============================================================================
 -- INICIALIZACIÓN
 -- ============================================================================
 
 function WCS_BrainHUD:Initialize()
     self:CreateHUD()
-    DEFAULT_CHAT_FRAME:AddMessage("|cFF00FF00[WCS_BrainHUD]|r Interfaz Holografica cargado. /brainhud toggle")
+    DEFAULT_CHAT_FRAME:AddMessage("|cFF00FF00[WCS_BrainHUD]|r Interfaz Holografica cargado. /brainhud para toggle.")
 end
 
 -- Evento de carga
@@ -178,6 +204,5 @@ f:SetScript("OnEvent", function() WCS_BrainHUD:Initialize() end)
 -- Comando Slash
 SLASH_WCSBRAINHUD1 = "/brainhud"
 SlashCmdList["WCSBRAINHUD"] = function(msg)
-    WCS_BrainHUD.Config.enabled = not WCS_BrainHUD.Config.enabled
-    DEFAULT_CHAT_FRAME:AddMessage("WCS_BrainHUD: " .. (WCS_BrainHUD.Config.enabled and "ON" or "OFF"))
+    WCS_BrainHUD:Toggle()
 end

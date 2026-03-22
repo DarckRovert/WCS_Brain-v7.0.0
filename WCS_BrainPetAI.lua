@@ -5,7 +5,7 @@
 -- (Moved below PetAI initialization)
 
 --[[
-    WCS_BrainPetAI.lua v6.7.1
+    WCS_BrainPetAI.lua v8.0.0
     Sistema de IA Inteligente para Mascotas de Warlock
 
     Caracteristicas:
@@ -78,7 +78,7 @@ end
 -- Ejemplo de integración: disparar eventos en situaciones clave
 -- (Puedes expandir esto en los métodos de combate, muerte, cambio de estado, etc)
 
-PetAI.VERSION = "6.7.1"  -- Mascotas inteligentes mejoradas + Sistema de ejecución corregido
+PetAI.VERSION = "8.0.0"  -- Mascotas inteligentes mejoradas + Sistema de ejecución corregido
 PetAI.ENABLED = true
 PetAI.debug = false
 PetAI.lastUpdate = 0
@@ -451,7 +451,7 @@ function PetAI:SetCooldown(spellName, duration)
     self.cooldowns[spellName] = { start = GetTime(), duration = duration }
 end
 -- ============================================================================
--- NUEVAS FUNCIONES v6.7.1 - Sistema mejorado de ejecución
+-- NUEVAS FUNCIONES v8.0.0 - Sistema mejorado de ejecución
 -- ============================================================================
 
 -- Obtener slot de habilidad por nombre
@@ -1908,7 +1908,7 @@ PetAI:Print("v" .. PetAI.VERSION .. " - Sistema de IA con Auto-Reenslave y Coord
 
 
 -- ============================================
--- NUEVAS FUNCIONES v6.7.1
+-- NUEVAS FUNCIONES v8.0.0
 -- ============================================
 
 -- Encuentra el slot de una habilidad de mascota por nombre

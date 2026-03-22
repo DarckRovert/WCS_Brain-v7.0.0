@@ -1,4 +1,4 @@
-# Sistema de Combate Integrado v6.7.1
+# Sistema de Combate Integrado v8.0.0
 
 ## ⚠️ IMPORTANTE: Cómo Usar el Sistema
 
@@ -12,7 +12,7 @@ El botón ejecuta automáticamente `WCS_Brain:Execute()` que llama a `GetNextAct
 
 ---
 
-## 🐾 Mejoras al Sistema de Control de Mascotas v6.7.1
+## 🐾 Mejoras al Sistema de Control de Mascotas v8.0.0
 
 **Problema Resuelto:**
 El sistema anterior de control de mascotas tenía una confiabilidad del ~60% porque usaba ChatFrameEditBox como método principal para ejecutar habilidades. Este método falla cuando:
@@ -94,7 +94,7 @@ Con `/petai debug` activado, verás mensajes como:
 
 ---
 
-# Sistema de Combate Integrado v6.8.0
+# Sistema de Combate Integrado v8.0.0
 
 ## Descripción General
 
@@ -128,7 +128,7 @@ WCS_BrainCombatController (Coordinador Central)
     │   ├── Análisis de amenaza
     │   ├── Predicción de mana
     │   ├── Time-to-kill estimation
-    │   └── Simulación de Daño (BrainSim) [ v7.0.0 ]
+    │   └── Simulación de Daño (BrainSim) [ v8.0.0 ]
     │
     ├── WCS_BrainAI (Sistema Base)
     │   └── Reglas básicas de combate

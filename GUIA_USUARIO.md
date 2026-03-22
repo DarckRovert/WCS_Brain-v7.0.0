@@ -1,4 +1,4 @@
-# 📖 Guía de Usuario - WCS_Brain v7.0.0
+# 📖 Guía de Usuario - WCS_Brain v8.0.0
 
 ## 🚀 Inicio Rápido
 
@@ -100,7 +100,7 @@ Los datos se guardan automáticamente y persisten entre sesiones.
 
 ---
 
-### 4. 🐾 Control Inteligente de Mascotas (/petai) - v6.7.1
+### 4. 🐾 Control Inteligente de Mascotas (/petai) - v8.0.0
 
 **Estado:** ✅ MEJORADO - Confiabilidad 60% → 95%
 
@@ -109,7 +109,7 @@ Sistema de IA avanzado para control automático de mascotas con múltiples modos
 
 **Comandos Principales:**
 ```lua
-/petai status       -- Ver estado y versión (v6.7.1)
+/petai status       -- Ver estado y versión (v8.0.0)
 /petai debug        -- Activar debug detallado
 /petai mode <modo>  -- Cambiar modo (aggressive/defensive/passive/guardian)
 /petai toggle       -- Activar/desactivar IA
@@ -138,7 +138,7 @@ Sistema de IA avanzado para control automático de mascotas con múltiples modos
    - Feedback visual: "[GUARDIÁN] Defendiendo a X (HP: 45%)"
    - Ideal para: Raids, dungeons como tank
 
-**Mejoras v6.7.1:**
+**Mejoras v8.0.0:**
 
 ✅ **Sistema de Ejecución Mejorado:**
 - Método 1: CastSpellByName() - 95% confiable
@@ -309,7 +309,7 @@ Navega por las tabs para ver información.
 **Solución:** Ejecuta `/wcswarlock status` para ver qué falta. Haz `/reload` si es necesario.
 
 ### "Detecta falsos positivos en buffs"
-**Causa:** Bug corregido en v6.9.1.
+**Causa:** Bug corregido en v8.0.0.
 **Solución:** Asegúrate de tener la versión 6.9.1 o superior.
 
 ## 🧠 Sistema de Aprendizaje
@@ -364,7 +364,7 @@ Combates: 50/10 ✅ Patrones muy precisos
 
 ---
 
-## 🆕 Sistemas Nuevos v6.9.1
+## 🆕 Sistemas Nuevos v8.0.0
 
 ### 8. 🔔 Notificaciones de Warlock (/wcswarlock o /wcslock)
 
@@ -446,7 +446,7 @@ Combates: 50/10 ✅ Patrones muy precisos
 
 ---
 
-### 17. 🤖 BrainHUD (/brainhud) - v7.0.0
+### 17. 🤖 BrainHUD (/brainhud) - v8.0.0
 
 **Funcionalidad:** Interfaz holográfica (HUD) flotante cerca del personaje.
 - **Visualización:** Muestra el icono de la siguiente decisión de la IA.
@@ -514,7 +514,7 @@ Si encuentras bugs o tienes sugerencias:
 
 ---
 
-**Versión:** 7.0.0
-**Fecha:** Enero 20, 2026
+**Versión:** 8.0.0
+**Fecha:** Marzo 22, 2026
 **Autor:** DarckRovert (El Séquito del Terror)
-**Tema:** Brujo/Warlock - Oscura y Demoníaca
+**Tema:** Deep Void UX (Temática Universal para 9 clases)

@@ -88,11 +88,24 @@ function WCS_ClanPanel:Initialize()
     -- Guardar referencia
     self.panel = panel
     
-    -- Actualizar lista inicial
+    -- Resincronización asíncrona de Guild
+    panel:RegisterEvent("GUILD_ROSTER_UPDATE")
+    panel:SetScript("OnEvent", function()
+        if event == "GUILD_ROSTER_UPDATE" then
+            WCS_ClanPanel:BuildMemberList()
+        end
+    end)
+    
+    -- Pedir lista inicial
     self:UpdateMemberList()
 end
 
 function WCS_ClanPanel:UpdateMemberList()
+    if not self.panel then return end
+    GuildRoster() -- Pide al servidor de WoW que actualice la lista de la guild (Asíncrono)
+end
+
+function WCS_ClanPanel:BuildMemberList()
     if not self.panel then return end
     
     -- Limpiar lista anterior
@@ -106,13 +119,10 @@ function WCS_ClanPanel:UpdateMemberList()
         self.panel.scrollChild = scrollChild
     end
     
-    -- Obtener información del clan
-    GuildRoster()
-    local numTotal, numOnline = GetNumGuildMembers()
+    local numTotal = GetNumGuildMembers()
     
     -- Asegurar que los valores no sean nil
     numTotal = numTotal or 0
-    numOnline = numOnline or 0
     
     if numTotal == 0 then
         -- No hay clan o no hay miembros
@@ -122,13 +132,10 @@ function WCS_ClanPanel:UpdateMemberList()
         return
     end
     
-    -- Actualizar estadísticas
-    self.panel.totalText:SetText("|cff00ff00Total:|r " .. numTotal)
-    self.panel.onlineText:SetText("|cff00ff00Online:|r " .. numOnline)
-    
-    -- Calcular nivel promedio y contar brujos
+    -- Calcular nivel promedio, brujos y gente online real
     local totalLevel = 0
     local numWarlocks = 0
+    local realOnlineCount = 0
     local yOffset = -5
     
     memberList = {}
@@ -148,6 +155,10 @@ function WCS_ClanPanel:UpdateMemberList()
                 numWarlocks = numWarlocks + 1
             end
             
+            if online then
+                realOnlineCount = realOnlineCount + 1
+            end
+            
             table.insert(memberList, {
                 name = name,
                 rank = rank,
@@ -159,7 +170,11 @@ function WCS_ClanPanel:UpdateMemberList()
         end
     end
     
-    local avgLevel = math.floor(totalLevel / numTotal)
+    local avgLevel = numTotal > 0 and math.floor(totalLevel / numTotal) or 0
+    
+    -- Renderizar variables actualizadas
+    self.panel.totalText:SetText("|cff00ff00Total:|r " .. numTotal)
+    self.panel.onlineText:SetText("|cff00ff00Online:|r " .. realOnlineCount)
     self.panel.avgLevelText:SetText("|cff00ff00Nivel Promedio:|r " .. avgLevel)
     self.panel.warlocksText:SetText("|cff00ff00Brujos:|r " .. numWarlocks)
     

@@ -1,0 +1,17 @@
+<Bindings>
+	<Binding name="WCS_TOGGLE_UI" header="WCS_BRAIN">
+		if WCS.UI and WCS.UI.MainFrame then
+            if WCS.UI.MainFrame:IsVisible() then 
+                WCS.UI.MainFrame:Hide() 
+            else 
+                WCS.UI.MainFrame:Show() 
+                WCS.UI:RefreshCurrentTab()
+            end
+        end
+	</Binding>
+    <Binding name="WCS_TOGGLE_AUTO" header="WCS_BRAIN">
+        if WCS.BrainAutoExecute then
+            WCS.BrainAutoExecute:Toggle()
+        end
+    </Binding>
+</Bindings>

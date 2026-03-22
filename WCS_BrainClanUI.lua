@@ -33,8 +33,9 @@ WCS_ClanUI.Colors = {
     SoulBlue = {r = 0.3, g = 0.3, b = 0.8},      -- Azul Alma
 }
 
--- Variables guardadas
-WCS_ClanUI_SavedVars = WCS_ClanUI_SavedVars or {
+-- Las variables de entorno son inyectadas por el cliente de WoW despues del init.
+-- Esta tabla base solo se usa en el primer lanzamiento o para mergear defaults
+local Default_SavedVars = {
     version = "1.0.0",
     firstRun = true,
     mainFrame = {
@@ -48,9 +49,9 @@ WCS_ClanUI_SavedVars = WCS_ClanUI_SavedVars or {
     panels = {
         clanPanel = true,
         warlockResources = true,
-        raidManager = true,
-        statistics = true,
-        grimoire = true,
+        raidManager = true, -- Retained from original
+        statistics = true,  -- Retained from original
+        grimoire = true,    -- Retained from original
         summonPanel = true,
         clanBank = true,
         pvpTracker = true,
@@ -71,6 +72,34 @@ WCS_ClanUI_SavedVars = WCS_ClanUI_SavedVars or {
 
 -- Frame principal
 local MainFrame = nil
+
+-- Función auxiliar para inicializar variables seguras (merge defaults)
+function WCS_ClanUI:InitSavedVars()
+    if not WCS_ClanUI_SavedVars then
+        WCS_ClanUI_SavedVars = {}
+    end
+    
+    -- Recursively merge defaults (shallow for 2 levels is enough here)
+    for k, v in pairs(Default_SavedVars) do
+        if WCS_ClanUI_SavedVars[k] == nil then
+            if type(v) == "table" then
+                WCS_ClanUI_SavedVars[k] = {}
+                for nk, nv in pairs(v) do
+                    WCS_ClanUI_SavedVars[k][nk] = nv
+                end
+            else
+                WCS_ClanUI_SavedVars[k] = v
+            end
+        elseif type(v) == "table" and type(WCS_ClanUI_SavedVars[k]) == "table" then
+            -- Nivel 2 merge
+            for nk, nv in pairs(v) do
+                if WCS_ClanUI_SavedVars[k][nk] == nil then
+                    WCS_ClanUI_SavedVars[k][nk] = nv
+                end
+            end
+        end
+    end
+end
 
 -- Inicialización
 function WCS_ClanUI:Initialize()
@@ -190,14 +219,19 @@ end
 function WCS_ClanUI:CreateTabs()
     local tabs = {
         {name = "Clan", icon = "Interface\\Icons\\INV_Misc_Book_11"},
-        {name = "Recursos", icon = "Interface\\Icons\\INV_Misc_Gem_Amethyst_02"},
-        {name = "Raid", icon = "Interface\\Icons\\Ability_Warlock_DemonicEmpowerment"},
-        {name = "Stats", icon = "Interface\\Icons\\INV_Misc_Note_01"},
-        {name = "Grimorio", icon = "Interface\\Icons\\INV_Misc_Book_09"},
-        {name = "Summons", icon = "Interface\\Icons\\Spell_Shadow_Twilight"},
-        {name = "Bank", icon = "Interface\\Icons\\INV_Misc_Bag_10"},
-        {name = "PvP", icon = "Interface\\Icons\\Ability_DualWield"},
     }
+    
+    local _, class = UnitClass("player")
+    if class == "WARLOCK" then
+        table.insert(tabs, {name = "Recursos", icon = "Interface\\Icons\\INV_Misc_Gem_Amethyst_02"})
+    end
+    
+    table.insert(tabs, {name = "Raid", icon = "Interface\\Icons\\Ability_Warlock_DemonicEmpowerment"})
+    table.insert(tabs, {name = "Stats", icon = "Interface\\Icons\\INV_Misc_Note_01"})
+    table.insert(tabs, {name = "Grimorio", icon = "Interface\\Icons\\INV_Misc_Book_09"})
+    table.insert(tabs, {name = "Summons", icon = "Interface\\Icons\\Spell_Shadow_Twilight"})
+    table.insert(tabs, {name = "Bank", icon = "Interface\\Icons\\INV_Misc_Bag_10"})
+    table.insert(tabs, {name = "PvP", icon = "Interface\\Icons\\Ability_DualWield"})
     
     MainFrame.tabs = {}
     local tabWidth = 90
@@ -631,16 +665,21 @@ function WCS_ClanUI:Print(msg)
     DEFAULT_CHAT_FRAME:AddMessage("|cff00ff00[Séquito del Terror]|r " .. msg)
 end
 
+-- Toggle es alias de ToggleMainFrame para compatibilidad con ButtonBar y SequitoButton
+WCS_ClanUI.Toggle = WCS_ClanUI.ToggleMainFrame
+
 -- Inicializar cuando el addon se carga
 local initFrame = CreateFrame("Frame")
 initFrame:RegisterEvent("ADDON_LOADED")
 initFrame:RegisterEvent("PLAYER_LOGIN")
 initFrame:SetScript("OnEvent", function()
     if event == "ADDON_LOADED" and arg1 == "WCS_Brain" then
+        WCS_ClanUI:InitSavedVars()
         WCS_ClanUI:Initialize()
     elseif event == "PLAYER_LOGIN" then
         -- Fallback: inicializar en login si no se inicializó antes
         if not WCS_ClanUI.Initialized then
+            WCS_ClanUI:InitSavedVars()
             WCS_ClanUI:Initialize()
         end
     end

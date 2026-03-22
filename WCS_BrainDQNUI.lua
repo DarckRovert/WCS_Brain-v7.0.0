@@ -9,7 +9,7 @@
 ]]--
 
 WCS_BrainDQNUI = WCS_BrainDQNUI or {}
-WCS_BrainDQNUI.VERSION = "6.4.2"
+WCS_BrainDQNUI.VERSION = "8.0.0"
 
 -- ============================================================================
 -- COLORES WARLOCK (consistente con WCS_BrainUI)
@@ -26,9 +26,9 @@ local COLORS = {
     WARNING = {1.0, 0.7, 0.0},
     
     -- UI
-    BG_DARK = {0.08, 0.06, 0.12},
-    BG_SECTION = {0.12, 0.10, 0.18},
-    BORDER = {0.5, 0.4, 0.7},
+    BG_DARK = {0.04, 0.02, 0.08},
+    BG_SECTION = {0.08, 0.05, 0.14},
+    BORDER = {0.58, 0.51, 0.79},
     TEXT_DIM = {0.6, 0.6, 0.6},
     TEXT_BRIGHT = {1.0, 1.0, 1.0},
     GOLD = {1.0, 0.82, 0.0},

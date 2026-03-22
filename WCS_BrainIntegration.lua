@@ -6,7 +6,7 @@
 ]]--
 
 WCS_BrainIntegration = WCS_BrainIntegration or {}
-WCS_BrainIntegration.VERSION = "6.4.2"
+WCS_BrainIntegration.VERSION = "8.0.0"
 
 -- ============================================================================
 -- TRACKING DE ACCIONES
