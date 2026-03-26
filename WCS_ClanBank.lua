@@ -5,6 +5,38 @@
 
 WCS_ClanBank = WCS_ClanBank or {}
 
+--[[
+    -- ============================================================================
+-- WCSVault: Protocolo P2P de Sincronizacion de Banco
+-- ============================================================================
+WCS_ClanBank.Vault = {
+    protocol = "WCSVault",
+    ledger = {},
+    maxEntries = 100
+}
+
+function WCS_ClanBank.Vault:BroadcastTransaction(type, amount, player)
+    local msg = string.format("%s:%s:%s", type, amount, player)
+    SendAddonMessage(self.protocol, msg, "GUILD")
+end
+
+function WCS_ClanBank.Vault:OnMessageReceived(prefix, message, sender)
+    if prefix ~= self.protocol then return end
+    
+    local type, amount, player = string.match(message, "([^:]+):([^:]+):([^:]+)")
+    if type and amount and player then
+        table.insert(self.ledger, 1, {
+            type = type,
+            amount = amount,
+            player = player,
+            time = GetTime()
+        })
+        if table.getn(self.ledger) > self.maxEntries then
+            table.remove(self.ledger)
+        end
+        WCS_Print(string.format("|cFF00FF00[WCSVault]|r Transaccion recibida: %s %sg de %s", type, amount, player))
+    end
+end
 local panel = nil
 local bankData = {
     transactions = {}

@@ -11,7 +11,7 @@
 ]]--
 
 WCS_BrainIntegrations = WCS_BrainIntegrations or {}
-WCS_BrainIntegrations.VERSION = "6.4.2"
+WCS_BrainIntegrations.VERSION = "9.3.0"
 WCS_BrainIntegrations.enabled = true
 
 -- ============================================================================

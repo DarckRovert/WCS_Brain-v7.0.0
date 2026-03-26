@@ -16,7 +16,7 @@
 ]]--
 
 WCS_Brain = WCS_Brain or {}
-WCS_Brain.VERSION = "7.0.0"
+WCS_Brain.VERSION = "9.3.0" -- [God-Tier] Restoration
 WCS_Brain.ENABLED = true
 WCS_Brain.DEBUG = false
 

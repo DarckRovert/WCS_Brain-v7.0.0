@@ -10,7 +10,7 @@
 ]]--
 
 WCS_BrainUI = WCS_BrainUI or {}
-WCS_BrainUI.VERSION = "9.0.0"
+WCS_BrainUI.VERSION = "9.3.0"
 WCS_BrainUI.AUTHOR = "Elnazzareno (DarckRovert)"
 
 -- ============================================================================
@@ -180,7 +180,7 @@ function WCS_BrainUI:CreateHeader(parent)
     -- Titulo principal unico (1 linea)
     local title = parent:CreateFontString(nil, "OVERLAY", "GameFontNormalLarge")
     title:SetPoint("LEFT", parent, "LEFT", 18, 0)
-    title:SetText("|cFF9482C9WCS|r |cFF00FF00BRAIN|r |cFFAAAAAACerebro v" .. self.VERSION .. "|r")
+    title:SetText("|cFF9482C9WCS|r |cFF00FF00BRAIN|r |cFFAAAAAACerebro |cFF9482C9v9.3.0|r")
     title:SetPoint("TOP", parent, "TOP", 0, -13)
     
     -- Boton cerrar
