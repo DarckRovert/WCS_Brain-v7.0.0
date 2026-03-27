@@ -1,5 +1,5 @@
---[[
-    WCS_Base.lua - Absolute Foundation v9.0.0
+﻿--[[
+    WCS_Base.lua - Absolute Foundation v9.3.0
     Compatible con Lua 5.0 (WoW 1.12 / Turtle WoW)
 ]]--
 

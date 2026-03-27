@@ -1,4 +1,4 @@
-# 📖 Guía de Usuario - WCS_Brain v8.0.0
+# 📖 Guía de Usuario - WCS_Brain v9.3.0
 
 ## 🚀 Inicio Rápido
 

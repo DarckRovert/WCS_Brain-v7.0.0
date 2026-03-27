@@ -1,9 +1,9 @@
---[[
-    WCS_DecisionEngine.lua - Elite Tactical Engine v9.0.0 (Multi-Class)
+﻿--[[
+    WCS_DecisionEngine.lua - Elite Tactical Engine v9.3.0 (Multi-Class)
     Compatible con Lua 5.0 (WoW 1.12 / Turtle WoW)
     
     Resuelve la mejor accion en base a la clase detectada por WCS.ClassEngine.
-    Funcionalidad REAL — Sin ficcion.
+    Funcionalidad REAL â€” Sin ficcion.
 ]]--
 
 WCS = WCS or {}
@@ -75,7 +75,7 @@ function DE:GetBestAction()
         end
     end
 
-    -- [3] Proc Awareness — check class proc trigger
+    -- [3] Proc Awareness â€” check class proc trigger
     local procTrigger = getProcTrigger()
     if procTrigger and WCS.Core and WCS.Core.HasBuff and WCS.Core:HasBuff(procTrigger) then
         local procAction = getProcAction()
@@ -83,7 +83,7 @@ function DE:GetBestAction()
         return { spell = procAction, reason = "PROC: " .. procTrigger }
     end
 
-    -- [4] Priority Rotation — class-aware
+    -- [4] Priority Rotation â€” class-aware
     local rotation = getClassRotation()
     local filler   = getClassFiller()
 
@@ -101,7 +101,7 @@ function DE:GetBestAction()
         end
     end
 
-    -- [5] Movement Filler — use instant spell if moving
+    -- [5] Movement Filler â€” use instant spell if moving
     if isMoving then
         -- Try Corruption (Warlock, instant with talent) or class-specific instant
         if WCS.ClassEngine and WCS.ClassEngine.class == "WARLOCK" then
@@ -116,4 +116,4 @@ function DE:GetBestAction()
     return { spell = filler, reason = "Filler" }
 end
 
-WCS:Log("Decision Engine v9.0.0 [Multi-Class] — ClassEngine Aligned.")
+WCS:Log("Decision Engine v9.3.0 [Multi-Class] â€” ClassEngine Aligned.")

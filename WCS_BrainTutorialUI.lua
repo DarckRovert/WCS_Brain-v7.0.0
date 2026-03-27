@@ -141,6 +141,15 @@ function WCS_BrainTutorialUI:Show()
     end
     self.frame:Show()
     self.isShowing = true
+    
+    -- Poblar el contenido si WCS_BrainTutorial esta disponible
+    if WCS_BrainTutorial and WCS_BrainTutorial.Steps then
+        local targetStep = WCS_BrainTutorial.currentStep or 1
+        local step = WCS_BrainTutorial.Steps[targetStep]
+        if step then
+            self:UpdateStep(targetStep, step)
+        end
+    end
 end
 
 function WCS_BrainTutorialUI:Hide()

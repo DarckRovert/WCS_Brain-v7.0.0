@@ -1,5 +1,5 @@
---[[
-    WCS_SpellManager.lua - Tactical Spell Execution v9.0.0 (Unified)
+﻿--[[
+    WCS_SpellManager.lua - Tactical Spell Execution v9.3.0 (Unified)
     Compatible con Lua 5.0 (WoW 1.12 / Turtle WoW)
 ]]--
 
@@ -46,4 +46,4 @@ function SM:GetIcon(name)
     return nil
 end
 
-WCS:Log("Spell Manager v9.0.0 (Unified Interface) Ready.")
+WCS:Log("Spell Manager v9.3.0 (Unified Interface) Ready.")

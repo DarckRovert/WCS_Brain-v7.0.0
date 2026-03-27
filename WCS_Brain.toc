@@ -4,7 +4,7 @@
 ## Notes-esES: Sistema de IA para Warlock - Exclusivo de El Sequito del Terror
 ## Author: Elnazzareno (DarckRovert)
 ## X-Guild: El Sequito del Terror
-## Version: 9.4.0
+## Version: 9.5.0
 ## SavedVariables: WCS_BrainSaved, WCS_BrainDQNButtonConfig, WCS_BrainThinkingButtonConfig, WCS_BrainButtonBarConfig, WCS_BrainMetricsSaved, WCS_BrainContextualSaved, WCS_BrainTutorialButtonSaved, WCS_ClanUI_SavedVars, WCS_BankData, WCS_PvPTrackerData, WCS_RaidManagerData, WCS_BrainLearningSaved
 ## SavedVariablesPerCharacter: WCS_BrainCharSaved
 

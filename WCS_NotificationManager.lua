@@ -1,8 +1,8 @@
---[[
-    WCS_NotificationManager.lua - Tactical Alert System v9.0.0
+﻿--[[
+    WCS_NotificationManager.lua - Tactical Alert System v9.3.0
     Compatible con Lua 5.0 (WoW 1.12 / Turtle WoW)
     
-    Alertas visuales en el centro de la pantalla para eventos críticos.
+    Alertas visuales en el centro de la pantalla para eventos crÃ­ticos.
 ]]--
 
 WCS = WCS or {}

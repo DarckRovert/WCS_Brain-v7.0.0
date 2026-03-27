@@ -1,5 +1,5 @@
---[[
-    WCS_BossManager.lua - Tactical Raid Auditor v9.0.0 (Unified)
+﻿--[[
+    WCS_BossManager.lua - Tactical Raid Auditor v9.3.0 (Unified)
     Compatible con Lua 5.0 (WoW 1.12 / Turtle WoW)
 ]]--
 
@@ -21,4 +21,4 @@ if WCS.EventManager then
     end)
 end
 
-WCS:Log("Boss Manager v9.0.0 (Combat-Sensing) Ready.")
+WCS:Log("Boss Manager v9.3.0 (Combat-Sensing) Ready.")

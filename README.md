@@ -1,17 +1,41 @@
-# WCS_Brain v9.0.0 🧠✨ [Ultimate God-Tier UI Edition]
+# WCS_Brain v9.3.1 🧠✨ [Ultimate God-Tier UI Edition]
 
 **Addon Core de Hermandad Exclusivo de "El Séquito del Terror"** 💀⚔️
 
 Addon modular avanzado para Turtle WoW (1.12) que implementa un sistema de IA ultra-inteligente, soporte **Multi-Clase (9 clases)**, gestión avanzada de recursos, aprendizaje automático y un Hub de Comando unificado.
 
-## 🚀 REARQUITECTURA MAYOR v8.2.0 [God-Tier Upgrade]
+## 🚀 Última Actualización v9.3.1 [Pet AI Fix - Marzo 2026]
+**Estado:** ✅ OPERATIVO — IA de Mascotas 100% Funcional (ES + EN)
+- **Pet AI Reparada**: Corrección de capitalización de 15+ habilidades de mascota (Sentence Case para cliente español).
+- **Motor de Macros Restaurado**: Sistema de casteo via `/cast` (inmune a slots de barra), con doble gatillo ES/EN.
+- **Paridad con Backup**: Comportamiento idéntico a la versión estable con restauración de target en 0.8s.
+
+## 🚀 REARQUITECTURA MAYOR v9.3.0 [God-Tier Upgrade]
 **Estado:** ✅ OPERATIVO - Compatibilidad Multi-Clase y Deep Void UX
 **v8 Integration:** Todo el sistema Predictivo y Holográfico ha sido reescrito para soportar **TODAS las clases** del juego (Warriors, Mages, Priests, Rogues, Hunters, Shamans, Druids, Paladins, Warlocks) con motores heurísticos dedicados.
 
-La versión 8.0 representa la evolución definitiva. Hemos consolidado el ecosistema fragmentado en un **Hub de Control de 5 Pestañas** y expandido el cerebro a todo el clan.
+La versión 9.3 representa la evolución definitiva. Hemos consolidado el ecosistema fragmentado en un **Hub de Control de 5 Pestañas** y expandido el cerebro a todo el clan.
 
-### 🌐 Séquito Ecosystem Compatible
-Este addon es ahora el **Vínculo Maestro** del ecosistema de 10 addons del clan. Se comunica bidireccionalmente con `TerrorSquadAI`, `TerrorMeter`, `pfUI` y el resto de la flota para una coordinación de combate inigualable.
+### 🌐 Séquito Ecosystem Compatible (SquadMind)
+Este addon es el **Vínculo Maestro** de la Red Neural de 10 addons del clan. 
+
+```mermaid
+graph TD
+    classDef core fill:#2C0000,stroke:#FF0000,stroke-width:2px,color:#fff;
+    classDef intel fill:#003366,stroke:#00BFFF,stroke-width:2px,color:#fff;
+    WCS["🔮 WCS_Brain<br/>(Vínculo Maestro)"]:::core
+    TSAI["🧠 TerrorSquadAI<br/>(Comandante Táctico)"]:::core
+    DT["⏱️ DoTimer<br/>(Reloj Biológico)"]:::intel
+    AUX["💰 aux-addon<br/>(Mercado)"]:::intel
+    
+    WCS <==>|Telemetría de Combate y Sugerencias| TSAI
+    DT ==>|Avisa de Debuffs faltantes| WCS
+    AUX -.->|Sincronización del Banco Clan| WCS
+```
+
+- **Simbiosis con TerrorSquadAI**: Envía sugerencias de IA calculadas localmente para que TSAI tome decisiones a nivel banda.
+- **Simbiosis con DoTimer**: Automatiza la rotación de Curses (Maldiciones) de Warlock detectando faltantes en el objetivo.
+- **Simbiosis con Aux**: Lee la base de precios del AH para valorar los bienes guardados en el `WCS_ClanBank`.
 
 ### ✨ Características Principales
 

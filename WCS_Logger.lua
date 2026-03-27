@@ -1,5 +1,5 @@
---[[
-    WCS_Logger.lua - Forensic Audit v9.0.0 (Hardened)
+﻿--[[
+    WCS_Logger.lua - Forensic Audit v9.3.0 (Hardened)
     Compatible con Lua 5.0 (WoW 1.12 / Turtle WoW)
 ]]--
 
@@ -15,7 +15,7 @@ function L:Log(level, module, msg)
     table.insert(self.Entries, 1, entry)
     if table.getn(self.Entries) > self.MaxEntries then table.remove(self.Entries) end
     
-    -- v9.0.0 Fix: Defer sync to SavedVars until after it's validated
+    -- v9.3.0 Fix: Defer sync to SavedVars until after it's validated
     if WCS.DataIsReady and WCS_BrainSaved then 
         WCS_BrainSaved.Log = self.Entries 
     end
@@ -27,4 +27,4 @@ function WCS:Log(msg)
     DEFAULT_CHAT_FRAME:AddMessage("|cff9482C9[WCS]|r " .. (msg or "")) 
 end
 
-WCS:Log("Forensic Logger v9.0.0 Aligned.")
+WCS:Log("Forensic Logger v9.3.0 Aligned.")

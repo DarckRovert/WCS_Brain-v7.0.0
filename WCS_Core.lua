@@ -1,5 +1,5 @@
---[[
-    WCS_Core.lua - Unified Heartbeat v9.0.0 (God-Tier Alignment)
+﻿--[[
+    WCS_Core.lua - Unified Heartbeat v9.3.0 (God-Tier Alignment)
     Compatible con Lua 5.0 (WoW 1.12 / Turtle WoW)
 ]]--
 
@@ -25,7 +25,7 @@ function Core:Init()
     self.Tick = CreateFrame("Frame")
     self.Tick:SetScript("OnUpdate", function() self:OnHeartbeat() end)
     
-    WCS:Log("Core Heartbeat v9.0.0 [Active]")
+    WCS:Log("Core Heartbeat v9.3.0 [Active]")
 end
 
 function Core:OnHeartbeat()
@@ -79,4 +79,4 @@ function Core:TargetHasDebuff(name)
     return false
 end
 
-WCS:Log("Core Infrastructure v9.0.0 [Aligned]")
+WCS:Log("Core Infrastructure v9.3.0 [Aligned]")

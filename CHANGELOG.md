@@ -1,6 +1,11 @@
-# Changelog - WCS_Brain
+# Changelog WCS_Brain
 
-## [9.4.0] - Marzo 27, 2026
+## [v9.5.0] - God-Tier UI Polish & Routing Fixes - 2026-03-26
+### Corregido
+- **Barra de Botones (ButtonBar)**: Arreglado un error crítico donde los botones de "Perfiles" y "Diagnósticos" fallaban silenciosamente por invocar `Toggle()` a módulos obsoletos; ahora renderizan correctamente sus pestañas en la ventana maestra de la UI.
+- **Tutorial UI**: Reparado el problema de la "ventana sin contenido"; ahora la UI del tutorial invoca automáticamente los datos base de `WCS_BrainTutorial.Steps` al ejecutarse a través del comando `/tutorialui` o botón.
+
+## [v9.4.1] - God-Tier UI Analytics Fix - 2026-03-26
 ### FIXED - UI Layout Audit & Complete Grid Redesign
 - **Grilla Consistente**: Todas las pestañas (5-14) ahora usan paneles de `308x455px` con columnas en `x=14` (izq) y `x=360` (der).
 - **Overlap de Títulos**: Primera fila de contenido movida a `y=-28` dentro de cada sección, evitando colisión con el título de la sección.

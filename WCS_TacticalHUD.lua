@@ -1,5 +1,5 @@
---[[
-    WCS_TacticalHUD.lua - Visual Intelligence v9.0.0
+﻿--[[
+    WCS_TacticalHUD.lua - Visual Intelligence v9.3.0
     Compatible con Lua 5.0 (WoW 1.12 / Turtle WoW)
 ]]--
 
@@ -37,7 +37,7 @@ function HUD:CreateFrame()
         insets = {left = 3, right = 3, top = 3, bottom = 3}
     })
     self.Main:SetBackdropColor(0.08, 0.06, 0.12, 0.85)
-    self.Main:SetBackdropBorderColor(0.58, 0.51, 0.79, 1) -- Séquito Purple
+    self.Main:SetBackdropBorderColor(0.58, 0.51, 0.79, 1) -- SÃ©quito Purple
     
     self.IconTex = self.Main:CreateTexture(nil, "ARTWORK")
     self.IconTex:SetWidth(40) self.IconTex:SetHeight(40)
@@ -55,7 +55,7 @@ function HUD:CreateFrame()
     self.Bar:SetWidth(120) self.Bar:SetHeight(5)
     self.Bar:SetPoint("BOTTOMLEFT", self.IconTex, "BOTTOMRIGHT", 10, 2)
     self.Bar:SetStatusBarTexture("Interface\\TargetingFrame\\UI-StatusBar")
-    self.Bar:SetStatusBarColor(0.58, 0.51, 0.79) -- Séquito Purple
+    self.Bar:SetStatusBarColor(0.58, 0.51, 0.79) -- SÃ©quito Purple
     self.Bar:SetMinMaxValues(0, 32)
 
     self.Main:Hide()
@@ -75,4 +75,4 @@ function HUD:Update()
     if UnitAffectingCombat("player") or UnitExists("target") then self.Main:Show() else self.Main:Hide() end
 end
 
-WCS:Log("Tactical HUD v9.0.0 (Hardened API) Aligned.")
+WCS:Log("Tactical HUD v9.3.0 (Hardened API) Aligned.")

@@ -1,5 +1,5 @@
---[[
-    WCS_DataManager.lua - Resource Intelligence v9.0.0 (Alignment)
+﻿--[[
+    WCS_DataManager.lua - Resource Intelligence v9.3.0 (Alignment)
     Compatible con Lua 5.0 (WoW 1.12 / Turtle WoW)
 ]]--
 
@@ -39,4 +39,4 @@ function DM:GetPetType()
     return "Minion"
 end
 
-WCS:Log("DataManager v9.0.0 (Hyper-Aware) Ready.")
+WCS:Log("DataManager v9.3.0 (Hyper-Aware) Ready.")

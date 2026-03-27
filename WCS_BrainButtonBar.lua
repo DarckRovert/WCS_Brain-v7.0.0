@@ -109,8 +109,8 @@ local buttonDefinitions = {
         icon = "Interface\\Icons\\INV_Misc_Book_09",
         tooltip = "Perfiles de Configuracion",
         onClick = function()
-            if WCS_BrainProfilesUI then
-                WCS_BrainProfilesUI:Toggle()
+            if WCS_BrainUI then
+                WCS_BrainUI:SelectTabByName("Perfiles")
             end
         end,
         module = "WCS_BrainProfilesButton"
@@ -150,8 +150,8 @@ local buttonDefinitions = {
         icon = "Interface\\Icons\\INV_Misc_Gear_01",
         tooltip = "Diagnosticos del Sistema",
         onClick = function()
-            if WCS_BrainDiagnostics then
-                WCS_BrainDiagnostics:Toggle()
+            if WCS_BrainUI then
+                WCS_BrainUI:SelectTabByName("Diagnostico")
             end
         end,
         onRightClick = function()
