@@ -934,161 +934,218 @@ DEFAULT_CHAT_FRAME:AddMessage("|cff00ff00[WCS SmartAI]|r Cargado v" .. SMART_AI_
 DEFAULT_CHAT_FRAME:AddMessage("|cff00ff00[WCS SmartAI]|r Tracking de amenaza activado")
 
 -- ============================================
--- INTERFAZ DE USUARIO (Tab 2)
+-- INTERFAZ DE USUARIO (Tab 2) v9.4.0 - Layout Fix
 -- ============================================
+--[[
+    LAYOUT MATEMATICO (todo en px, Y negativo desde TOPLEFT del bg):
+    Frame f: 680 x 490
+    Inner bg: 660 x 470  (margen 10px por lado)
+
+    ZONA 1 - CABECERA  (y: 0 → -55):
+      Titulo:    TOP,    y=-14            (texto ~16px)
+      Subtitulo: TOP,    y=-36            (texto ~12px, gap 8px)
+      Checkbox:  TOPLEFT x=12, y=-8     (UICheckButton = ~24px)
+      Check lbl: LEFT del checkbox
+
+    ZONA 2 - DOS PANELES  (y: -58 → -418, h=360):
+      Panel izq:  x=10,   w=305, h=360   (extremo derecho = 315)
+      Panel der:  x=325,  w=305, h=360   (extremo derecho = 630, margen=30)
+      Gap entre paneles: 10px
+
+    ZONA 3 - BOTON RESET  (y: -428):
+      Centrado horizontalmente, h=26
+
+    SLIDERS (dentro del panel izquierdo, 6 en columna unica):
+      Slot 1: label y=-26,  slider y=-40,  valor y=slider+BOTTOM-2
+      Slot 2: y=slot1 - 56  (14lbl + 25slider + 12val + 5gap = 56)
+      Slot 3: y=slot2 - 56
+      ... hasta slot 6
+      Total usado: 26 + 5*56 = 306px << 360px OK
+
+    INFO PANEL DERECHO:
+      3 textos largos, separados 36px
+      Inician en y=-26 dentro del panel
+]]
 
 function WCS_BrainSmartAI:CreateUI()
     if _G["WCSBrainSmartAIFrame"] then return end
-    
+
+    -- --- Frame principal ---
     local f = CreateFrame("Frame", "WCSBrainSmartAIFrame", UIParent)
     f:SetWidth(680)
     f:SetHeight(490)
     f:Hide()
-    
-    -- Contenedor interior oscuro
+
+    -- --- Background interior ---
     local bg = CreateFrame("Frame", nil, f)
-    bg:SetPoint("TOPLEFT", f, "TOPLEFT", 10, -10)
-    bg:SetPoint("BOTTOMRIGHT", f, "BOTTOMRIGHT", -10, 10)
+    bg:SetPoint("TOPLEFT",     f, "TOPLEFT",     10, -10)
+    bg:SetPoint("BOTTOMRIGHT", f, "BOTTOMRIGHT", -10,  10)
     bg:SetBackdrop({
-        bgFile = "Interface\\Tooltips\\UI-Tooltip-Background",
+        bgFile   = "Interface\\Tooltips\\UI-Tooltip-Background",
         edgeFile = "Interface\\Tooltips\\UI-Tooltip-Border",
         tile = true, tileSize = 16, edgeSize = 16,
         insets = { left = 4, right = 4, top = 4, bottom = 4 }
     })
-    bg:SetBackdropColor(0.04, 0.02, 0.08, 0.9)   -- Fondo oscuro (BG_DARK)
-    bg:SetBackdropBorderColor(0, 1, 0.5, 0.8)    -- Borde fel green (AI)
-    
-    -- Título Central
-    local title = f:CreateFontString(nil, "OVERLAY", "GameFontNormalLarge")
-    title:SetPoint("TOP", bg, "TOP", 0, -15)
+    bg:SetBackdropColor(0.04, 0.02, 0.08, 0.9)
+    bg:SetBackdropBorderColor(0, 1, 0.5, 0.8)
+
+    -- ================================================================
+    -- ZONA 1: CABECERA  (y 0 → -55 dentro de bg)
+    -- ================================================================
+
+    -- Título centrado
+    local title = bg:CreateFontString(nil, "OVERLAY", "GameFontNormalLarge")
+    title:SetPoint("TOP", bg, "TOP", 0, -14)
     title:SetText("|cFF00FF80SMART AI ENGINE|r")
-    
-    -- Info del Motor
-    local subtitle = f:CreateFontString(nil, "OVERLAY", "GameFontNormal")
-    subtitle:SetPoint("TOP", title, "BOTTOM", 0, -5)
-    subtitle:SetText("|cFFAAAAAAAnálisis de contexto, DPS, Eficiencia y Resiliencia|r")
-    
-    -- Checkbox ON/OFF
+
+    -- Subtítulo centrado, debajo del título
+    local subtitle = bg:CreateFontString(nil, "OVERLAY", "GameFontNormalSmall")
+    subtitle:SetPoint("TOP", bg, "TOP", 0, -36)
+    subtitle:SetText("|cFFAAAAAAAnalisis de contexto, DPS, Eficiencia y Resiliencia|r")
+
+    -- Checkbox en la esquina superior izquierda
     local enableCheck = CreateFrame("CheckButton", nil, bg, "UICheckButtonTemplate")
-    enableCheck:SetPoint("TOPLEFT", bg, "TOPLEFT", 20, -20)
+    enableCheck:SetPoint("TOPLEFT", bg, "TOPLEFT", 12, -8)
     enableCheck:SetChecked(true)
-    
-    local enableLabel = bg:CreateFontString(nil, "OVERLAY", "GameFontNormal")
-    enableLabel:SetPoint("LEFT", enableCheck, "RIGHT", 5, 0)
-    enableLabel:SetText("Activar Smart AI Override")
-    
-    -- Panel de Análisis en Vivo (top-right, sin solapar el checkbox)
-    local analysisPanel = CreateFrame("Frame", nil, bg)
-    analysisPanel:SetWidth(285)
-    analysisPanel:SetHeight(110)
-    analysisPanel:SetPoint("TOPRIGHT", bg, "TOPRIGHT", -20, -45)
-    analysisPanel:SetBackdrop({
-        bgFile = "Interface\\Tooltips\\UI-Tooltip-Background",
-        edgeFile = "Interface\\Tooltips\\UI-Tooltip-Border",
-        tile = true, tileSize = 8, edgeSize = 8,
-        insets = { left = 2, right = 2, top = 2, bottom = 2 }
-    })
-    analysisPanel:SetBackdropColor(0.1, 0.1, 0.2, 0.8)
-    analysisPanel:SetBackdropBorderColor(0.5, 0.5, 0.5, 0.5)
-    
-    local analysisTitle = analysisPanel:CreateFontString(nil, "OVERLAY", "GameFontNormal")
-    analysisTitle:SetPoint("TOP", analysisPanel, "TOP", 0, -10)
-    analysisTitle:SetText("|cFFFFFF00Análisis de Combate en Vivo|r")
-    
-    local roleText = analysisPanel:CreateFontString(nil, "OVERLAY", "GameFontNormal")
-    roleText:SetPoint("TOPLEFT", analysisPanel, "TOPLEFT", 15, -35)
-    roleText:SetText("Role Detectado: |cFFFFFFFF" .. WCS_BrainSmartAI:GetPlayerRole() .. "|r")
-    f.roleText = roleText
-    
-    local manaStrat = analysisPanel:CreateFontString(nil, "OVERLAY", "GameFontNormal")
-    manaStrat:SetPoint("TOPLEFT", roleText, "BOTTOMLEFT", 0, -15)
-    manaStrat:SetText("Mana Strategy: |cFF0088FF" .. WCS_BrainSmartAI:GetManaStrategy() .. "|r")
-    f.manaStrat = manaStrat
-    
-    local threatLevel = analysisPanel:CreateFontString(nil, "OVERLAY", "GameFontNormal")
-    threatLevel:SetPoint("TOPLEFT", manaStrat, "BOTTOMLEFT", 0, -15)
-    threatLevel:SetText("Nivel Amenaza: |cFFFF6600" .. math.floor(WCS_BrainSmartAI:EstimateThreatLevel()) .. "%|r")
-    f.threatLevel = threatLevel
-    
-    -- Panel de Ajuste de Pesos (Weights) - debajo del checkbox y título
-    local weightsTitle = bg:CreateFontString(nil, "OVERLAY", "GameFontNormalLarge")
-    weightsTitle:SetPoint("TOPLEFT", bg, "TOPLEFT", 25, -85)
-    weightsTitle:SetText("|cFFCC99FFPonderación de Hechizos|r")
-    
-    local descWeights = bg:CreateFontString(nil, "OVERLAY", "GameFontNormalSmall")
-    descWeights:SetPoint("TOPLEFT", weightsTitle, "BOTTOMLEFT", 0, -4)
-    descWeights:SetText("|cFF888888Ajusta cómo la IA valora diferentes factores al decidir qué hechizo lanzar|r")
-    
-    local function CreateWeightSlider(parent, name, key, id, x, y)
-        local slider = CreateFrame("Slider", "WCS_BrainSmartAISlider" .. id, parent, "OptionsSliderTemplate")
-        slider:SetPoint("TOPLEFT", parent, "TOPLEFT", x, y)
+
+    local enableLabel = bg:CreateFontString(nil, "OVERLAY", "GameFontNormalSmall")
+    enableLabel:SetPoint("LEFT", enableCheck, "RIGHT", 2, 0)
+    enableLabel:SetText("|cFFFFFFFF Activar Smart AI|r")
+
+    -- ================================================================
+    -- ZONA 2: PANELES PRINCIPALES  (y -58 → -418)
+    -- Panel izq x=10, Panel der x=325, ambos w=305, h=360
+    -- ================================================================
+    local function MakePanel(x, title_txt, br, bg_r, bb)
+        local p = CreateFrame("Frame", nil, bg)
+        p:SetWidth(305)
+        p:SetHeight(360)
+        p:SetPoint("TOPLEFT", bg, "TOPLEFT", x, -58)
+        p:SetBackdrop({
+            bgFile   = "Interface\\Tooltips\\UI-Tooltip-Background",
+            edgeFile = "Interface\\Tooltips\\UI-Tooltip-Border",
+            tile = true, tileSize = 8, edgeSize = 8,
+            insets = { left = 2, right = 2, top = 2, bottom = 2 }
+        })
+        p:SetBackdropColor(0.07, 0.04, 0.12, 0.92)
+        p:SetBackdropBorderColor(br, bg_r, bb, 0.85)
+        local t = p:CreateFontString(nil, "OVERLAY", "GameFontNormal")
+        t:SetFont("Fonts\\FRIZQT__.TTF", 10, "OUTLINE")
+        t:SetPoint("TOP", p, "TOP", 0, -8)
+        t:SetText(title_txt)
+        return p
+    end
+
+    local leftPanel  = MakePanel(10,  "|cFFCC99FFPonderacion de Hechizos|r",       0.8, 0.6, 1.0)
+    local rightPanel = MakePanel(325, "|cFFFFFF00Analisis de Combate en Vivo|r",   1.0, 0.85, 0.0)
+
+    -- ================================================================
+    -- SLIDERS DE PESO (panel izquierdo, 6 slots verticales)
+    -- Slot n: label a y = -26 - (n-1)*56,  slider a y = y_label - 14
+    -- Cada slot ocupa 56px (14 label + 25 slider + 12 val + 5 gap = 56)
+    -- Total: 26 + 5*56 = 306px dentro de 360px (OK)
+    -- ================================================================
+    local SLOT_H  = 56    -- px por slot
+    local SL_W    = 275   -- ancho de cada slider (deja 15px de margen a c/lado)
+
+    local sliderDefs = {
+        { name = "|cFFFF3333DPS|r (Dano Neto)",          key = "DPS",           id = 1 },
+        { name = "|cFF3388FFEficiencia|r (Dano/Mana)",   key = "EFFICIENCY",    id = 2 },
+        { name = "|cFFFF8833Amenaza|r (Aggro)",           key = "THREAT",        id = 3 },
+        { name = "|cFF33FF33Utilidad|r (CC/Debuffs)",    key = "UTILITY",       id = 4 },
+        { name = "|cFFFFFF33Urgencia|r (Ejecucion)",     key = "URGENCY",       id = 5 },
+        { name = "|cFFFF33FFSupervivencia|r (Defensa)",  key = "SURVIVABILITY", id = 6 },
+    }
+
+    for i, def in ipairs(sliderDefs) do
+        local label_y  = -26 - (i - 1) * SLOT_H
+        local slider_y = label_y - 14
+
+        -- Etiqueta
+        local lbl = leftPanel:CreateFontString(nil, "OVERLAY", "GameFontNormalSmall")
+        lbl:SetPoint("TOPLEFT", leftPanel, "TOPLEFT", 15, label_y)
+        lbl:SetText(def.name)
+
+        -- Slider
+        local slider = CreateFrame("Slider", "WCS_BrainSmartAISlider" .. def.id, leftPanel, "OptionsSliderTemplate")
+        slider:SetPoint("TOPLEFT", leftPanel, "TOPLEFT", 15, slider_y)
+        slider:SetWidth(SL_W)
         slider:SetMinMaxValues(0.0, 3.0)
         slider:SetValueStep(0.1)
-        slider:SetWidth(180)
-        
-        local text = _G[slider:GetName().."Text"]
-        text:SetText(name)
-        
-        local low = _G[slider:GetName().."Low"]
-        low:SetText("0.0")
-        
-        local high = _G[slider:GetName().."High"]
-        high:SetText("3.0")
-        
-        -- Valor actual
-        local valText = slider:CreateFontString(nil, "OVERLAY", "GameFontNormalSmall")
-        valText:SetPoint("TOP", slider, "BOTTOM", 0, -3)
-        valText:SetText(string.format("%.1f", WCS_BrainSmartAI.Weights[key]))
-        
-        slider:SetValue(WCS_BrainSmartAI.Weights[key])
-        
+        _G[slider:GetName() .. "Text"]:SetText("")   -- ocultar texto central del template
+        _G[slider:GetName() .. "Low"]:SetText("0.0")
+        _G[slider:GetName() .. "High"]:SetText("3.0")
+
+        -- Valor numérico debajo del slider
+        local initVal = WCS_BrainSmartAI.Weights[def.key] or 1.0
+        local valText = leftPanel:CreateFontString(nil, "OVERLAY", "GameFontNormalSmall")
+        valText:SetPoint("TOP", slider, "BOTTOM", 0, -2)
+        valText:SetText(string.format("%.1f", initVal))
+
+        slider:SetValue(initVal)
+        local capturedKey = def.key
         slider:SetScript("OnValueChanged", function()
             local val = this:GetValue()
             valText:SetText(string.format("%.1f", val))
-            WCS_BrainSmartAI.Weights[key] = val
+            WCS_BrainSmartAI.Weights[capturedKey] = val
         end)
     end
-    
-    -- Columna 1 (izquierda) - offset Y ajustado para 490px
-    CreateWeightSlider(bg, "|cFFFF3333DPS|r (Daño Neto)",             "DPS",           1, 20,  -140)
-    CreateWeightSlider(bg, "|cFF3388FFEficiencia|r (Daño/Mana)",       "EFFICIENCY",    2, 20,  -195)
-    CreateWeightSlider(bg, "|cFFFF8833Amenaza|r (Aggro)",              "THREAT",        3, 20,  -250)
-    
-    -- Columna 2 (derecha)
-    CreateWeightSlider(bg, "|cFF33FF33Utilidad|r (CC/Debuffs)",        "UTILITY",       4, 340, -140)
-    CreateWeightSlider(bg, "|cFFFFFF33Urgencia|r (Ejecución)",          "URGENCY",       5, 340, -195)
-    CreateWeightSlider(bg, "|cFFFF33FFSupervivencia|r (Defensa)",       "SURVIVABILITY", 6, 340, -250)
-    
-    local resetDefaultsBtn = CreateFrame("Button", nil, bg, "UIPanelButtonTemplate")
-    resetDefaultsBtn:SetPoint("TOPLEFT", bg, "TOPLEFT", 240, -310)
-    resetDefaultsBtn:SetWidth(150)
-    resetDefaultsBtn:SetHeight(25)
-    resetDefaultsBtn:SetText("Restaurar Valores")
-    resetDefaultsBtn:SetScript("OnClick", function()
+
+    -- ================================================================
+    -- PANEL DERECHO: 3 textos informativos (actualizados en OnUpdate)
+    -- Separados 36px entre sí, inician en y=-26
+    -- ================================================================
+    local roleText = rightPanel:CreateFontString(nil, "OVERLAY", "GameFontNormal")
+    roleText:SetPoint("TOPLEFT", rightPanel, "TOPLEFT", 15, -26)
+    roleText:SetWidth(275)
+    roleText:SetText("Role Detectado: |cFFFFFFFF" .. WCS_BrainSmartAI:GetPlayerRole() .. "|r")
+    f.roleText = roleText
+
+    local manaStrat = rightPanel:CreateFontString(nil, "OVERLAY", "GameFontNormal")
+    manaStrat:SetPoint("TOPLEFT", rightPanel, "TOPLEFT", 15, -62)
+    manaStrat:SetWidth(275)
+    manaStrat:SetText("Mana Strategy: |cFF0088FF" .. WCS_BrainSmartAI:GetManaStrategy() .. "|r")
+    f.manaStrat = manaStrat
+
+    local threatLevel = rightPanel:CreateFontString(nil, "OVERLAY", "GameFontNormal")
+    threatLevel:SetPoint("TOPLEFT", rightPanel, "TOPLEFT", 15, -98)
+    threatLevel:SetWidth(275)
+    threatLevel:SetText("Nivel de Amenaza: |cFFFF6600" .. math.floor(WCS_BrainSmartAI:EstimateThreatLevel()) .. "%|r")
+    f.threatLevel = threatLevel
+
+    -- ================================================================
+    -- ZONA 3: BOTON RESET
+    -- Panel inferior = -58 - 360 = -418 dentro de bg
+    -- Boton centrado en -430 (12px de gap bajo los paneles)
+    -- ================================================================
+    local resetBtn = CreateFrame("Button", nil, bg, "UIPanelButtonTemplate")
+    resetBtn:SetWidth(160)
+    resetBtn:SetHeight(26)
+    resetBtn:SetPoint("TOP", bg, "TOP", 0, -430)
+    resetBtn:SetText("Restaurar Valores")
+    resetBtn:SetScript("OnClick", function()
         WCS_BrainSmartAI.Weights = {
             DPS = 1.0, EFFICIENCY = 0.8, THREAT = 0.6,
             UTILITY = 0.7, URGENCY = 1.2, SURVIVABILITY = 1.5
         }
-        _G["WCS_BrainSmartAISlider1"]:SetValue(1.0)
-        _G["WCS_BrainSmartAISlider2"]:SetValue(0.8)
-        _G["WCS_BrainSmartAISlider3"]:SetValue(0.6)
-        _G["WCS_BrainSmartAISlider4"]:SetValue(0.7)
-        _G["WCS_BrainSmartAISlider5"]:SetValue(1.2)
-        _G["WCS_BrainSmartAISlider6"]:SetValue(1.5)
+        local defaults = { 1.0, 0.8, 0.6, 0.7, 1.2, 1.5 }
+        for idx = 1, 6 do
+            local sl = _G["WCS_BrainSmartAISlider" .. idx]
+            if sl then sl:SetValue(defaults[idx]) end
+        end
     end)
-    
-    -- Evento OnUpdate para el análisis en vivo
+
+    -- ================================================================
+    -- OnUpdate: refrescar texto del panel derecho cada 0.5s
+    -- ================================================================
     local updateTimer = 0
     f:SetScript("OnUpdate", function()
         updateTimer = updateTimer + arg1
-        if updateTimer > 0.5 then
+        if updateTimer > 0.5 and f:IsVisible() then
             updateTimer = 0
-            if f:IsVisible() then
-                f.roleText:SetText("Role Detectado: |cFFFFFFFF" .. WCS_BrainSmartAI:GetPlayerRole() .. "|r")
-                f.manaStrat:SetText("Mana Strategy: |cFF0088FF" .. WCS_BrainSmartAI:GetManaStrategy() .. "|r")
-                f.threatLevel:SetText("Nivel Amenaza: |cFFFF6600" .. math.floor(WCS_BrainSmartAI:EstimateThreatLevel()) .. "%|r")
-            end
+            f.roleText:SetText("Role Detectado: |cFFFFFFFF" .. WCS_BrainSmartAI:GetPlayerRole() .. "|r")
+            f.manaStrat:SetText("Mana Strategy: |cFF0088FF" .. WCS_BrainSmartAI:GetManaStrategy() .. "|r")
+            f.threatLevel:SetText("Nivel de Amenaza: |cFFFF6600" .. math.floor(WCS_BrainSmartAI:EstimateThreatLevel()) .. "%|r")
         end
     end)
 end
-
