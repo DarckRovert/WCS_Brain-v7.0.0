@@ -114,9 +114,9 @@ function WCS_Grimoire:ScanPlayerSpells()
         i = i + 1
     end
     
-    -- Convertir tabla a array
+    -- Convertir tabla a array - Lua 5.0: pairs() requerido
     local spellArray = {}
-    for name, spell in spells do
+    for name, spell in pairs(spells) do
         table.insert(spellArray, spell)
     end
     
@@ -218,10 +218,10 @@ function WCS_Grimoire:Initialize()
     self.spellScrollChild = scrollChild
     self.spellButtons = {}
     
-    -- Panel de detalles (derecha)
+    -- Panel de detalles (derecha, relativo al spellListBg)
     local detailsBg = CreateFrame("Frame", nil, panel)
+    detailsBg:SetPoint("TOPLEFT",  spellListBg, "TOPRIGHT", 10, 0)
     detailsBg:SetPoint("TOPRIGHT", -10, -75)
-    detailsBg:SetWidth(400)
     detailsBg:SetHeight(250)
     local detailsBgTex = detailsBg:CreateTexture(nil, "BACKGROUND")
     detailsBgTex:SetAllPoints()
@@ -232,16 +232,16 @@ function WCS_Grimoire:Initialize()
     detailsTitle:SetText("|cffFFD700Detalles del Hechizo|r")
     
     self.detailsText = detailsBg:CreateFontString(nil, "OVERLAY", "GameFontNormalSmall")
-    self.detailsText:SetPoint("TOPLEFT", 10, -30)
-    self.detailsText:SetWidth(380)
+    self.detailsText:SetPoint("TOPLEFT",  detailsBg, "TOPLEFT",  10, -30)
+    self.detailsText:SetPoint("BOTTOMRIGHT", detailsBg, "BOTTOMRIGHT", -10, 5)
     self.detailsText:SetJustifyH("LEFT")
+    self.detailsText:SetJustifyV("TOP")
     self.detailsText:SetText("Selecciona un hechizo para ver detalles")
     
-    -- Panel de rotación (derecha abajo)
+    -- Panel de rotación (derecha abajo, anclado al detailsBg)
     local rotationBg = CreateFrame("Frame", nil, panel)
-    rotationBg:SetPoint("TOPRIGHT", -10, -335)
-    rotationBg:SetWidth(400)
-    rotationBg:SetHeight(190)
+    rotationBg:SetPoint("TOPLEFT",  detailsBg, "BOTTOMLEFT",  0, -10)
+    rotationBg:SetPoint("BOTTOMRIGHT", -10, 10)
     local rotationBgTex = rotationBg:CreateTexture(nil, "BACKGROUND")
     rotationBgTex:SetAllPoints()
     rotationBgTex:SetTexture(0, 0, 0, 0.5)
@@ -251,9 +251,10 @@ function WCS_Grimoire:Initialize()
     rotationTitle:SetText("|cffFFD700Rotación Recomendada|r")
     
     self.rotationText = rotationBg:CreateFontString(nil, "OVERLAY", "GameFontNormalSmall")
-    self.rotationText:SetPoint("TOPLEFT", 10, -30)
-    self.rotationText:SetWidth(380)
+    self.rotationText:SetPoint("TOPLEFT",  rotationBg, "TOPLEFT",  10, -30)
+    self.rotationText:SetPoint("BOTTOMRIGHT", rotationBg, "BOTTOMRIGHT", -10, 5)
     self.rotationText:SetJustifyH("LEFT")
+    self.rotationText:SetJustifyV("TOP")
     
     self.panel = panel
     

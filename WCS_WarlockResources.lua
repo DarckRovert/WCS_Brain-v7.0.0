@@ -55,10 +55,10 @@ function WCS_WarlockResources:Initialize()
     end)
     panel.felPanel = felPanel
     
-    -- Información de mascota (más compacta)
+    -- Información de mascota — relativa al padre, sin SetWidth(760) que desborda
     local petPanel = CreateFrame("Frame", nil, panel)
-    petPanel:SetPoint("TOPLEFT", 10, -380)
-    petPanel:SetWidth(760)
+    petPanel:SetPoint("TOPLEFT",  10, -380)
+    petPanel:SetPoint("TOPRIGHT", -10, -380)
     petPanel:SetHeight(70)
     petPanel:SetBackdrop({
         bgFile = "Interface\\DialogFrame\\UI-DialogBox-Background",
@@ -194,8 +194,8 @@ function WCS_WarlockResources:UpdateResources()
         local petManaMax = UnitManaMax("pet")
         local petLevel = UnitLevel("pet")
         
-        local healthPercent = math.floor((petHealth / petHealthMax) * 100)
-        local manaPercent = math.floor((petMana / petManaMax) * 100)
+        local healthPercent = petHealthMax > 0 and math.floor((petHealth / petHealthMax) * 100) or 0
+        local manaPercent  = petManaMax  > 0 and math.floor((petMana  / petManaMax)  * 100) or 0
         
         local infoStr = string.format(
             "|cff9370DB%s|r (Nv %d)\nHP: %d/%d (%d%%) | Mana: %d/%d (%d%%)",
