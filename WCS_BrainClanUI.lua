@@ -461,7 +461,7 @@ function WCS_ClanUI:RegisterSlashCommands()
     
     SlashCmdList["WCSCLANBANK"] = function(msg)
         WCS_ClanUI:ToggleMainFrame()
-        WCS_ClanUI:SelectTab(7) -- Tab del banco
+        WCS_ClanUI:SelectTab(3) -- Tab del banco
     end
     
     -- Comando para abrir directamente raid manager
@@ -471,7 +471,7 @@ function WCS_ClanUI:RegisterSlashCommands()
     
     SlashCmdList["WCSRAIDMGR"] = function(msg)
         WCS_ClanUI:ToggleMainFrame()
-        WCS_ClanUI:SelectTab(3) -- Tab de raid manager
+        WCS_ClanUI:SelectTab(4) -- Tab de raid manager
     end
     
     -- Comando para abrir directamente summon panel
@@ -481,7 +481,7 @@ function WCS_ClanUI:RegisterSlashCommands()
     
     SlashCmdList["WCSSUMMON"] = function(msg)
         WCS_ClanUI:ToggleMainFrame()
-        WCS_ClanUI:SelectTab(6) -- Tab de summon panel
+        WCS_ClanUI:SelectTab(8) -- Tab de summon panel
     end
     
     -- Comando para abrir directamente statistics
@@ -490,7 +490,7 @@ function WCS_ClanUI:RegisterSlashCommands()
     
     SlashCmdList["WCSSTATS"] = function(msg)
         WCS_ClanUI:ToggleMainFrame()
-        WCS_ClanUI:SelectTab(4) -- Tab de statistics
+        WCS_ClanUI:SelectTab(2) -- Tab de statistics
     end
     
     -- Comando para abrir directamente grimoire
@@ -499,7 +499,7 @@ function WCS_ClanUI:RegisterSlashCommands()
     
     SlashCmdList["WCSGRIMOIRE"] = function(msg)
         WCS_ClanUI:ToggleMainFrame()
-        WCS_ClanUI:SelectTab(5) -- Tab de grimoire
+        WCS_ClanUI:SelectTab(6) -- Tab de grimoire
     end
     
     -- Comando para abrir directamente PvP tracker
@@ -508,7 +508,7 @@ function WCS_ClanUI:RegisterSlashCommands()
     
     SlashCmdList["WCSPVP"] = function(msg)
         WCS_ClanUI:ToggleMainFrame()
-        WCS_ClanUI:SelectTab(8) -- Tab de PvP tracker
+        WCS_ClanUI:SelectTab(5) -- Tab de PvP tracker
     end
 end
 

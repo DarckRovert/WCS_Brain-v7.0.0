@@ -28,7 +28,7 @@ function WCS_WarlockResources:Initialize()
     local shardPanel = self:CreateResourcePanel(panel, "Soul Shards", 10, -50, "Interface\\Icons\\INV_Misc_Gem_Amethyst_02")
     panel.shardPanel = shardPanel
     
-    local healthPanel = self:CreateResourcePanel(panel, "Healthstones", 400, -50, "Interface\\Icons\\INV_Stone_04", "Crear", function()
+    local healthPanel = self:CreateResourcePanel(panel, "Healthstones", 345, -50, "Interface\\Icons\\INV_Stone_04", "Crear", function()
         WCS_WarlockResources:CastHighestRank("Create Healthstone")
     end)
     panel.healthPanel = healthPanel
@@ -39,21 +39,21 @@ function WCS_WarlockResources:Initialize()
     end)
     panel.soulPanel = soulPanel
     
-    local firePanel = self:CreateResourcePanel(panel, "Firestones", 400, -160, "Interface\\Icons\\INV_Ammo_FireTar", "Crear", function()
+    local firePanel = self:CreateResourcePanel(panel, "Firestones", 345, -160, "Interface\\Icons\\INV_Ammo_FireTar", "Crear", function()
         WCS_WarlockResources:CastHighestRank("Create Firestone")
     end)
     panel.firePanel = firePanel
     
-    -- Fila 3: Spellstones y Felstones
+    -- Fila 3: Spellstones
     local spellPanel = self:CreateResourcePanel(panel, "Spellstones", 10, -270, "Interface\\Icons\\INV_Misc_Gem_Sapphire_01", "Crear", function()
         WCS_WarlockResources:CastHighestRank("Create Spellstone")
     end)
     panel.spellPanel = spellPanel
     
-    local felPanel = self:CreateResourcePanel(panel, "Felstones", 400, -270, "Interface\\Icons\\INV_Misc_Gem_Bloodstone_01", "Crear", function()
-        CastSpellByName("Create Felstone")
-    end)
+    local felPanel = self:CreateResourcePanel(panel, "Próximamente", 345, -270, "Interface\\Icons\\INV_Misc_QuestionMark")
     panel.felPanel = felPanel
+    panel.felPanel.countText:SetText("|cff888888---|r")
+    panel.felPanel.infoText:SetText("Espacio Libre")
     
     -- Información de mascota — relativa al padre, sin SetWidth(760) que desborda
     local petPanel = CreateFrame("Frame", nil, panel)
@@ -96,7 +96,7 @@ end
 function WCS_WarlockResources:CreateResourcePanel(parent, title, x, y, icon, buttonText, buttonCallback)
     local frame = CreateFrame("Frame", nil, parent)
     frame:SetPoint("TOPLEFT", x, y)
-    frame:SetWidth(370)
+    frame:SetWidth(325)
     frame:SetHeight(100)
     frame:SetBackdrop({
         bgFile = "Interface\\DialogFrame\\UI-DialogBox-Background",
@@ -135,9 +135,9 @@ function WCS_WarlockResources:CreateResourcePanel(parent, title, x, y, icon, but
     -- Botón de creación (si se proporciona)
     if buttonText and buttonCallback then
         local btn = CreateFrame("Button", nil, frame, "UIPanelButtonTemplate")
-        btn:SetWidth(100)
+        btn:SetWidth(80)
         btn:SetHeight(22)
-        btn:SetPoint("BOTTOMRIGHT", -8, 8)
+        btn:SetPoint("BOTTOMRIGHT", -6, 6)
         btn:SetText(buttonText)
         btn:SetScript("OnClick", buttonCallback)
         frame.createButton = btn
@@ -180,10 +180,10 @@ function WCS_WarlockResources:UpdateResources()
     self.panel.spellPanel.countText:SetText("|cffffaa00" .. spellCount .. "|r")
     self.panel.spellPanel.infoText:SetText("En inventario")
     
-    -- Contar Felstones
-    local felCount = self:CountItem("Felstone")
-    self.panel.felPanel.countText:SetText("|cffffaa00" .. felCount .. "|r")
-    self.panel.felPanel.infoText:SetText("En inventario")
+    -- Contar Próximamente (placeholder)
+    if self.panel.felPanel then
+        -- Sin acción por ahora
+    end
     
     -- Actualizar info de mascota
     if UnitExists("pet") then
@@ -210,13 +210,19 @@ function WCS_WarlockResources:UpdateResources()
     end
 end
 
--- IDs de items de brujo
+-- IDs de items de brujo (WoW 1.12.1 - Incluye rangos menores y variantes mejoradas por talentos)
 local ITEM_IDS = {
     ["Soul Shard"] = 6265,
-    ["Healthstone"] = {5512, 19004, 19005, 5511, 5509, 5510}, -- Minor a Major
-    ["Soulstone"] = {5232, 16892, 16893, 16895, 16896}, -- Minor a Major
-    ["Firestone"] = {1254, 13699, 13700, 13701}, -- Lesser a Major
-    ["Spellstone"] = {5522, 13602, 13603} -- Lesser a Major
+    ["Healthstone"] = {
+        5509, 19006, 19007, -- Minor (Normal, Improved 1/2, 2/2)
+        5511, 19008, 19009, -- Lesser
+        19005, 19010, 19011, -- Healthstone
+        19004, 19012, 19013, -- Greater
+        5512, 19014, 19015   -- Major
+    },
+    ["Soulstone"] = {5232, 16892, 16893, 16895, 16896}, -- Todos los rangos
+    ["Firestone"] = {1254, 13699, 13700, 13701},      -- Todos los rangos
+    ["Spellstone"] = {5522, 13602, 13603}             -- Todos los rangos
 }
 
 -- Función para castear el rango más alto de un hechizo
