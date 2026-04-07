@@ -1,43 +1,18 @@
-# FAQ — WCS_Brain ❓
+# ❓ Wiki: FAQ [The Neural Core] — WCS_Brain
 
-> **Preguntas Frecuentes del ecosistema El Séquito del Terror.**
+Preguntas frecuentes y resolución de problemas técnicos para el núcleo v7.1+.
 
----
+## 🛠️ Error: Mi mascota no usa hechizos automáticamente.
+- **Causa**: El motor de inferencia táctica se desactiva si tu nivel de Soul Shards es inferior al umbral de seguridad (`WCS_BrainSafety`).
+- **Solución**: Verifica tus fragmentos. O bien, desactiva temporalmente el **Safety Mode** en el panel de Brain.
 
-### Peligros y Seguridad 🛡️
+## ⚙️ ¿Cómo funciona el aprendizaje?
+- **Proceso**: El motor ML observa qué hechizos lanzas tú y qué hechizos lanza tu mascota. Si detecta un patrón de éxito (objetivo muerto rápido sin daño excesivo), aumenta el "peso" de esa secuencia en la caché de inferencia.
 
-**¿El uso de IA en WCS_Brain puede causar baneo?**
-No. La "IA" de WCS_Brain es una red neuronal local que se ejecuta dentro del sandbox de Lua de World of Warcraft. No lee memoria externa ni automatiza clics de hardware. Todas las acciones se sugieren mediante el "Botón de Pensar" y deben ser validadas por el jugador.
-
----
-
-### Rendimiento y Memoria 📊
-
-**¿WCS_Brain consume mucha memoria?**
-WCS_Brain es un framework robusto. Consume entre 15MB y 25MB de RAM dependiendo de la cantidad de datos en el banco del clan y el historial de aprendizaje. Sin embargo, utiliza un sistema de **Throttling** para asegurar que el impacto en los FPS sea nulo durante el combate.
-
-**¿Cómo puedo reducir el consumo de memoria?**
-Puedes usar el comando `/wb cleanup` para purgar el historial de aprendizaje antiguo o cache de combate.
-
----
-
-### Funcionalidades de Clan 👥
-
-**¿Cómo sincronizo los datos con mi hermandad?**
-WCS_Brain utiliza un canal de addon oculto (`WCS_SYNC`). La sincronización es P2P (Peer-to-Peer). Cuando estás en un grupo o raid con otros miembros de **El Séquito del Terror**, el addon intercambiará automáticamente datos de honor, kills y estado del banco.
-
-**¿El Banco del Clan es real?**
-Es una simulación logística. Sirve para llevar un registro de quién tiene qué recursos, facilitando la organización de raids sin necesidad de usar el banco de hermandad estándar de versiones superiores de WoW.
-
----
-
-### Solución de Problemas Comunes 🛠️
-
-**El panel principal no aparece al escribir /wb.**
-Asegúrate de que no haya conflictos con otros addons de interfaz. Prueba a usar `/wb hide` y luego `/wb show`. Si persiste, usa `/wb reset` (Cuidado: esto borrará tu configuración).
-
-**La mascota no sigue las órdenes de la IA.**
-Verifica en la pestaña **Mascotas** que el "Modo Inteligente" esté activo. Además, asegúrate de tener los hechizos de la mascota en su barra de acción original.
+## ⚡ El juego da picos de lag al invocar a la mascota.
+**Estado**: ✅ Optimizado en v7.1.0.
+- El escaneo inicial de hechizos de la mascota ahora se ejecuta en ráfagas asíncronas para no bloquear la carga del mundo.
 
 ---
 © 2026 **DarckRovert** — El Séquito del Terror.
+*Ingeniería de software para la élite de Azeroth.*

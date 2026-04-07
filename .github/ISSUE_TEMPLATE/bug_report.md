@@ -1,32 +1,34 @@
 ---
-name: Bug Report
-about: Create a report to help us improve WCS_Brain
-title: "[BUG] "
-labels: bug
-assignees: DarckRovert
+name: "🐞 Bug Report — The Neural Core (WCS_Brain)"
+about: "Reporta un fallo en el motor de IA v7.1.0+"
+title: "[BUG] Descripción breve del problema"
+labels: ["bug", "neural-error"]
+assignees: darckrovert
+
 ---
 
-**Describe the bug**
-A clear and concise description of what the bug is.
+## 📝 Descripción del Problema
+Describe de forma técnica qué anomalía presenta el núcleo neuronal.
 
-**To Reproduce**
-Steps to reproduce the behavior:
-1. Go to '...'
-2. Click on '....'
-3. Scroll down to '....'
-4. See error
+## 🚀 Pasos para Reproducir
+1.  Invocar a la mascota [ej: Súcubo].
+2.  Iniciar combate con [ej: Objetivo nivel 60].
+3.  Observar el fallo de IA: [ej: No lanza Seducción].
 
-**Expected behavior**
-A clear and concise description of what you expected to happen.
+## 📊 Entorno Táctico
+- **Versión de WCS_Brain**: [v7.1.0 Neural-Tier]
+- **Estado de Soul Shards**: [Indica cuántos tenías]
+- **Perfil Activo**: [ej: PvP, Raid]
 
-**Screenshots**
-If applicable, add screenshots to help explain your problem.
+## 📁 Logs (WCS_Brain Logger)
+Pega el error LUA completo.
 
-**Game Context**
-- Zone:
-- Level:
-- Combat State:
-- Error Message (if any):
+```lua
+-- PEGA EL ERROR AQUÍ
+```
 
-**Additional context**
-Add any other context about the problem here.
+## 📸 Evidencia Visual
+Adjunta capturas del Neural HUD si el problema es de visualización de métricas.
+
+---
+© 2026 **DarckRovert** — El Séquito del Terror.

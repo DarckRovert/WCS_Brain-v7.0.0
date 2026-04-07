@@ -1,16 +1,20 @@
-# Contributor Covenant Code of Conduct
+# Code of Conduct — The Neural Core (WCS_Brain) 🛡️⚔️
 
-## Our Pledge
-We as members, contributors, and leaders pledge to make participation in our community a harassment-free experience for everyone, regardless of age, body size, visible or invisible disability, ethnicity, sex characteristics, gender identity and expression, level of experience, education, socio-economic status, nationality, personal appearance, race, religion, or sexual identity and orientation.
+Como miembros de **El Séquito del Terror** y colaboradores de **DarckRovert**, nos comprometemos a mantener un ambiente de desarrollo táctico excepcional.
 
-We pledge to act and interact in ways that contribute to an open, welcoming, diverse, inclusive, and healthy community.
+## ⚖️ Nuestra Conducta
+- **Rigor Técnico**: Cada línea de código en el núcleo neuronal debe estar justificada.
+- **Transparencia**: Todo cambio en los pesos de inferencia debe ser auditable y documentado en `CHANGELOG.md`.
+- **Excelencia**: Priorizamos la estabilidad del servidor y el rendimiento del cliente sobre la complejidad innecesaria.
 
-## Our Standards
-Examples of behavior that contributes to a positive environment for our community include:
-- Demonstrating empathy and kindness toward other people
-- Being respectful of differing opinions, viewpoints, and experiences
-- Giving and gracefully accepting constructive feedback
-- Accepting responsibility and apologizing to those affected by our mistakes, and learning from the experience
-- Focusing on what is best not just for us as individuals, but for the overall community
+## 🚫 Comportamientos Inaceptables
+- Introducir lógica que cause bucles infinitos en el hilo principal de WoW.
+- Ignorar las medidas de seguridad de fragmentos de alma (`WCS_BrainSafety`).
+- Alterar la identidad institucional del Séquito.
 
-Refer to the full text at [https://www.contributor-covenant.org/version/2/1/code_of_conduct/](https://www.contributor-covenant.org/version/2/1/code_of_conduct/)
+## 🛑 Reportes
+Cualquier incidente debe reportarse directamente vía **Twitch** o **Discord** de **DarckRovert**.
+
+---
+© 2026 **DarckRovert** — El Séquito del Terror.
+*Ingeniería de software para la élite de Azeroth.*

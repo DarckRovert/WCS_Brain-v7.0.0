@@ -1,19 +1,25 @@
 ---
-name: Feature Request
-about: Suggest an idea for WCS_Brain
-title: "[FEAT] "
-labels: enhancement
-assignees: DarckRovert
+name: "🚀 Feature Request — The Neural Core (WCS_Brain)"
+about: "Propón un nuevo comportamiento táctico para el motor de IA"
+title: "[FEATURE] Breve título de la función"
+labels: ["enhancement", "tactical-improvement"]
+assignees: darckrovert
+
 ---
 
-**Is your feature request related to a problem?**
-A clear and concise description of what the problem is. Ex. I'm always frustrated when [...]
+## 🎯 Objetivo Táctico
+Describe el escenario de combate donde esta mejora marcaría la diferencia.
 
-**Describe the solution you'd like**
-A clear and concise description of what you want to happen.
+## 🛠️ Lógica de Inferencia Propuesta
+- **Módulo**: [ej: WCS_BrainPetAI.lua]
+- **Datos de Entrada**: [ej: HP del Objetivo, Debuffs en el Jugador]
+- **Decisión**: [ej: Priorizar Drenar Vida sobre Descarga de las Sombras]
 
-**Describe alternatives you've considered**
-A clear and concise description of any alternative solutions or features you've considered.
+## 📐 Criterios de Aceptación
+1.  No debe comprometer los FPS.
+2.  Debe respetar los fragmentos de alma (`WCS_BrainSafety`).
+3.  Debe ser [ej: Adaptativo al nivel 60].
 
-**Additional context**
-Add any other context or screenshots about the feature request here.
+---
+© 2026 **DarckRovert** — El Séquito del Terror.
+*Dotando de inteligencia a las sombras de Azeroth.*

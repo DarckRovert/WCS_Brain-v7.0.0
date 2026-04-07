@@ -1,12 +1,24 @@
-# Security Policy
+# Security Policy — The Neural Core (WCS_Brain) 🔒🧠
 
-## Supported Versions
-Only the latest **God-Tier** release (currently 9.3.x) is supported with security updates.
+Protegemos la integridad de tu núcleo táctico y la seguridad de tu inventario en **Turtle WoW**.
 
-## Reporting a Vulnerability
-If you discover a security vulnerability (e.g., P2P sync exploits, arbitrary code execution via chat channels), please:
-1.  **Do NOT** open a public issue.
-2.  DM **DarckRovert** on Discord or email `admin@vegayzanchez.com`.
-3.  Provide a detailed report and steps to reproduce.
+## 🛡️ Soporte por Versión
+| Versión | Estado |
+| --- | --- |
+| v7.1.x | ✅ Soportada |
+| v7.0.x | ⚠️ Crítico |
 
-We aim to respond within 48 hours and resolve critical issues as soon as possible.
+## 🛡️ Reporte de Vulnerabilidades
+Si descubres un bug que comprometa la gestión de Soul Shards (`WCS_BrainSafety`) o que cause picos de memoria en el motor ML:
+
+1.  **NO publique el exploit masivamente.**
+2.  Reporta vía **Discord oficial** de **DarckRovert**.
+3.  Incluye el log de `WCS_BrainLogger.lua`.
+
+## 🛡️ Protecciones Integradas
+- **Memory Cap**: El motor de aprendizaje tiene límites estrictos de almacenamiento por sesión.
+- **Async Execution**: Los cálculos de inferencia están aislados del motor de renderizado básico.
+
+---
+© 2026 **DarckRovert** — El Séquito del Terror.
+*Ingeniería de software segura para Azeroth.*
