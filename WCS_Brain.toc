@@ -1,6 +1,6 @@
 ## Interface: 11200
 ## Title: |cffffffffWCS_Brain |r|cff00ccff[Séquito del Terror]|r
-## Version: 9.4.0 [Omni-Tier]
+## Version: 7.1.0 [Neural-Tier]
 ## Notes: Sistema de IA para Warlock - Orquesta el combate y la gestión del clan. Exclusivo de El Séquito del Terror.
 ## Author: El Séquito del Terror (DarckRovert)
 ## X-Guild: El Séquito del Terror

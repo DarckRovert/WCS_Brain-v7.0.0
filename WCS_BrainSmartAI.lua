@@ -934,7 +934,8 @@ DEFAULT_CHAT_FRAME:AddMessage("|cff00ff00[WCS SmartAI]|r Cargado v" .. SMART_AI_
 DEFAULT_CHAT_FRAME:AddMessage("|cff00ff00[WCS SmartAI]|r Tracking de amenaza activado")
 
 -- ============================================
--- INTERFAZ DE USUARIO (Tab 2) v9.4.0 - Layout Fix
+-- INTERFAZ DE USUARIO (Tab 2) v7.1.0 - Layout Fix
+
 -- ============================================
 --[[
     LAYOUT MATEMATICO (todo en px, Y negativo desde TOPLEFT del bg):

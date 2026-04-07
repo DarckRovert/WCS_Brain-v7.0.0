@@ -3,7 +3,7 @@
     Compatible con Lua 5.0 (WoW 1.12 / Turtle WoW)
 
     Autor: Elnazzareno (DarckRovert)
-    Version: 9.4.0 - UI Layout Audit & Fix
+    Version: 7.1.0 - UI Layout Audit & Fix (Neural-Tier)
 ]]--
 
 -- ============================================================================
@@ -830,4 +830,4 @@ function WCS_ClassRotations:CreateUI()
     end)
 end
 
-DEFAULT_CHAT_FRAME:AddMessage("|cFF9482C9[WCS_BrainTabPanels]|r v9.4.0 - UI Layout Fixed & Loaded")
+DEFAULT_CHAT_FRAME:AddMessage("|cFF9482C9[WCS_BrainTabPanels]|r v7.1.0 - UI Layout Fixed & Loaded")
