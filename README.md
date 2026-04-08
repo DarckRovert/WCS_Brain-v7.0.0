@@ -35,12 +35,12 @@ No es un AddOn de macros. Es un motor de **Inferencia Táctica** que otorga una 
 
 ## 🏗️ Suite de Documentación (Wiki)
 
-Domina el poder del núcleo neuronal en nuestra base de conocimientos:
+Domina el poder del núcleo neuronal en nuestra base de conocimientos oficial:
 
-- 📐 **[Arquitectura Táctica](./wiki/Architecture.md)**: Flujo de decisiones y lógica ML.
-- 🛠️ **[Guía de API Brain](./wiki/API_Guide.md)**: Integración con TerrorMeter y pfUI.
-- ❓ **[FAQ Neural](./wiki/FAQ.md)**: Solución de problemas de sincronización.
-- 📖 **[Manual del Conjurador](./wiki/User_Manual.md)**: Guía de entrenamiento de mascotas.
+- 🏰 **[Arquitectura Táctica](https://github.com/DarckRovert/WCS_Brain-v9.3.1-God-Tier/wiki/Arquitectura-(Extended))**: Flujo de decisiones y lógica ML.
+- 🛠️ **[Guía de API Brain](https://github.com/DarckRovert/WCS_Brain-v9.3.1-God-Tier/wiki/Guía-de-API)**: Integración con TerrorMeter y pfUI.
+- ❓ **[FAQ Neural](https://github.com/DarckRovert/WCS_Brain-v9.3.1-God-Tier/wiki/FAQ)**: Solución de problemas de sincronización.
+- 📖 **[Manual del Conjurador](https://github.com/DarckRovert/WCS_Brain-v9.3.1-God-Tier/wiki/Manual-de-Usuario)** / **[User Manual](https://github.com/DarckRovert/WCS_Brain-v9.3.1-God-Tier/wiki/User-Manual-(English))**.
 
 ## 🚀 Despliegue Rápido (Elite-Flow)
 
