@@ -23,6 +23,9 @@ WCS_BrainIntegrations.Config = {
     enableBossMods = true,
     enableUnitFrames = true,
     enableCastingBars = true,
+    enablePredictiveAI = true, -- BigWigs AI Evasion
+    enableSocialFilter = true, -- WIM Auto-Reply
+    enableNarrativeLore = true, -- QuestVoice Lore Reaction
     autoDetect = true,
     updateInterval = 1.0,
     debugMode = false
@@ -396,6 +399,46 @@ function WCS_BrainIntegrations.BossMods:GetCurrentBossInfo()
 end
 
 -- ============================================================================
+-- IA PREDICTIVA: BIGWIGS (Evasión de Mascotas)
+-- ============================================================================
+function WCS_BrainIntegrations.BossMods:InitPredictiveAI()
+    if not BigWigs or not BigWigs.TriggerEvent then return end
+    
+    -- Si ya fue hookeado, salir
+    if self.predictiveHooked then return end
+    self.predictiveHooked = true
+    
+    WCS_BrainIntegrations:Log("Iniciando conexión neuronal con BigWigs...")
+    
+    local originalTrigger = BigWigs.TriggerEvent
+    BigWigs.TriggerEvent = function(selfObject, eventName, ...)
+        -- Capturar eventos
+        if eventName == "BigWigs_Message" and WCS_BrainIntegrations.Config.enablePredictiveAI then
+            local text = arg and arg[1] or ""
+            local priority = arg and arg[2] or "Info"
+            
+            -- Si es una alerta Urgente o Importante
+            if priority == "Urgent" or priority == "Important" or priority == "Alarm" then
+                -- Evaluar si es daño en área masivo
+                local lowerText = string.lower(text)
+                if string.find(lowerText, "void zone") or string.find(lowerText, "incoming") or string.find(lowerText, "meteor") or string.find(lowerText, "run") then
+                    
+                    -- Activar evasión de mascota
+                    if UnitExists("pet") and not UnitIsDeadOrGhost("pet") then
+                        -- Forzar a la mascota a regresar
+                        PetFollow()
+                        if WCS_BrainPetChat then
+                            WCS_BrainPetChat:SendChat("¡" .. text .. "! Regresando al lado del amo.")
+                        end
+                    end
+                end
+            end
+        end
+        return originalTrigger(selfObject, eventName, unpack(arg))
+    end
+end
+
+-- ============================================================================
 -- INTEGRACIÓN CON UNIT FRAMES
 -- ============================================================================
 WCS_BrainIntegrations.UnitFrames = {}
@@ -494,6 +537,50 @@ function WCS_BrainIntegrations:FireDamageCallbacks(data)
         end
     end
 end
+
+-- ============================================================================
+-- IA PREDICTIVA: WIM & QUESTVOICE
+-- ============================================================================
+WCS_BrainIntegrations.WorldAIFrame = CreateFrame("Frame", "WCS_WorldAIFrame")
+WCS_BrainIntegrations.WorldAIFrame:RegisterEvent("CHAT_MSG_WHISPER")
+WCS_BrainIntegrations.WorldAIFrame:RegisterEvent("QUEST_DETAIL")
+WCS_BrainIntegrations.WorldAIFrame:RegisterEvent("QUEST_GREETING")
+
+WCS_BrainIntegrations.WorldAIFrame:SetScript("OnEvent", function()
+    -- WIM / Whispers (Secretario Social)
+    if event == "CHAT_MSG_WHISPER" and WCS_BrainIntegrations.Config.enableSocialFilter then
+        local msg = arg1
+        local sender = arg2
+        
+        -- Si estamos en combate crítico (< 30% HP), auto-responder
+        if UnitAffectingCombat("player") then
+            local hpPct = (UnitHealth("player") / UnitHealthMax("player")) * 100
+            if hpPct < 30 then
+                -- Responder por el jugador
+                SendChatMessage("[WCS Neural] El amo está en combate crítico y a punto de morir. Responderá luego.", "WHISPER", nil, sender)
+                if WCS_BrainPetChat then
+                    WCS_BrainPetChat:SendChat("He interceptado un susurro de " .. sender .. " para que no te distraigas, amo.")
+                end
+            end
+        end
+    end
+    
+    -- QUESTVOICE / Misiones (Consciencia Narrativa)
+    if (event == "QUEST_DETAIL" or event == "QUEST_GREETING") and WCS_BrainIntegrations.Config.enableNarrativeLore then
+        local text = GetQuestText and GetQuestText() or ""
+        if text and text ~= "" and WCS_BrainPetChat and UnitExists("pet") then
+            local lText = string.lower(text)
+            -- Búsqueda de patrones
+            if string.find(lText, "kill") or string.find(lText, "matar") or string.find(lText, "slay") then
+                WCS_BrainPetChat:SendChat("¿Más sangre? Este npc me agrada.")
+            elseif string.find(lText, "bring") or string.find(lText, "fetch") or string.find(lText, "traer") then
+                WCS_BrainPetChat:SendChat("No somos mulas de carga... pero si tú lo dices, amo.")
+            elseif string.find(lText, "boar") or string.find(lText, "jabal") then
+                WCS_BrainPetChat:SendChat("Olor a cerdo... mis favoritos para rostizar.")
+            end
+        end
+    end
+end)
 
 -- ============================================================================
 -- INTEGRACIÓN CON WCS_BRAIN
@@ -696,6 +783,25 @@ function WCS_BrainIntegrations:Initialize()
     
     -- Hook WCS_BrainAI si está disponible
     self:HookBrainAI()
+    
+    -- Iniciar IA Predictiva (BossMods)
+    if self.Config.enablePredictiveAI then
+        -- Retrasar 2 segundos para asegurar que BigWigs esté cargado
+        C_Timer_After = function(t, f)
+            local fr = CreateFrame("Frame")
+            fr.t = 0
+            fr:SetScript("OnUpdate", function()
+                this.t = this.t + arg1
+                if this.t >= t then
+                    this:SetScript("OnUpdate", nil)
+                    f()
+                end
+            end)
+        end
+        C_Timer_After(2, function()
+            self.BossMods:InitPredictiveAI()
+        end)
+    end
     
     self:Log("Sistema de Integraciones v" .. self.VERSION .. " inicializado")
 end
