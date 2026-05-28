@@ -50,6 +50,7 @@ WCS_BrainIntegrations.lua
 WCS_BrainLearning.lua
 WCS_BrainTerrorMeter.lua
 WCS_BrainIntegration.lua
+WCS_BrainIntegrations.lua
 WCS_BrainAI.lua
 WCS_BrainSmartAI.lua
 WCS_BrainSmartAI_Integration.lua

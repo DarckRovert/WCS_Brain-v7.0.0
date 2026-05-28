@@ -282,6 +282,12 @@ function WCS_BrainPetChat:Say(petType, situation)
     DEFAULT_CHAT_FRAME:AddMessage(color .. "[" .. petType .. "]|r " .. dialog)
 end
 
+function WCS_BrainPetChat:SendChat(text)
+    if not self.enabled or not self.currentPet then return end
+    local color = self:GetPetColor(self.currentPet) or "|cFFFFaa00"
+    DEFAULT_CHAT_FRAME:AddMessage(color .. "[" .. self.currentPet .. "]|r " .. text)
+end
+
 function WCS_BrainPetChat:ProcessPlayerChat(msg)
     if not self.enabled or not self.currentPet or not UnitExists("pet") then return end
     
