@@ -105,16 +105,25 @@ function WCS_BrainHUD:CreateHUD()
     self.ManaText:SetPoint("CENTER", self.ManaBar, "CENTER", 0, 0)
     self.ManaText:SetText("100%")
 
-    -- Shards
+    -- Shards / Ammo
     local shardIcon = self.Frame:CreateTexture(nil, "ARTWORK")
     shardIcon:SetWidth(18)
     shardIcon:SetHeight(18)
     shardIcon:SetPoint("TOPLEFT", self.Frame, "TOPLEFT", 83, -50)
     shardIcon:SetTexture("Interface\\Icons\\Inv_Misc_Gem_Amethyst_02")
+    self.ShardIcon = shardIcon
 
     self.ShardCount = self.Frame:CreateFontString(nil, "OVERLAY", "GameFontNormal")
     self.ShardCount:SetPoint("LEFT", shardIcon, "RIGHT", 4, 0)
     self.ShardCount:SetText("|cFF9482C90 fragmentos|r")
+
+    -- Happiness (Solo Hunter)
+    self.HappinessIcon = self.Frame:CreateTexture(nil, "ARTWORK")
+    self.HappinessIcon:SetWidth(18)
+    self.HappinessIcon:SetHeight(18)
+    self.HappinessIcon:SetPoint("LEFT", self.ShardCount, "RIGHT", 10, 0)
+    self.HappinessIcon:SetTexture("Interface\\PetPaperDollFrame\\UI-PetHappiness")
+    self.HappinessIcon:Hide()
 
     -- Fase de combate
     self.PhaseText = self.Frame:CreateFontString(nil, "OVERLAY", "GameFontNormalSmall")
@@ -185,14 +194,42 @@ function WCS_BrainHUD:OnUpdate(elapsed)
         end
     end
 
-    -- === Shards ===
+    -- === Shards / Ammo ===
     if self.ShardCount then
-        local shards = 0
-        if WCS_ResourceManager and WCS_ResourceManager.GetShardCount then
-            shards = WCS_ResourceManager:GetShardCount() or 0
+        local _, englishClass = UnitClass("player")
+        if englishClass == "HUNTER" then
+            self.ShardIcon:SetTexture("Interface\\Icons\\INV_Misc_Ammo_Arrow_02")
+            local ammo = 0
+            if WCS_ResourceManager and WCS_ResourceManager.GetAmmoCount then
+                ammo = WCS_ResourceManager:GetAmmoCount()
+            end
+            local color = ammo < 200 and "FF4444" or "FFFFFF"
+            self.ShardCount:SetText("|cFF" .. color .. ammo .. " municion|r")
+            
+            -- Felicidad de la mascota
+            if UnitExists("pet") and GetPetHappiness then
+                self.HappinessIcon:Show()
+                local hap = GetPetHappiness()
+                if hap == 1 then
+                    self.HappinessIcon:SetTexCoord(0.375, 0.5625, 0, 0.359375) -- Infeliz
+                elseif hap == 2 then
+                    self.HappinessIcon:SetTexCoord(0.1875, 0.375, 0, 0.359375) -- Contento
+                else
+                    self.HappinessIcon:SetTexCoord(0, 0.1875, 0, 0.359375) -- Feliz
+                end
+            else
+                self.HappinessIcon:Hide()
+            end
+        else
+            self.ShardIcon:SetTexture("Interface\\Icons\\Inv_Misc_Gem_Amethyst_02")
+            local shards = 0
+            if WCS_ResourceManager and WCS_ResourceManager.GetShardCount then
+                shards = WCS_ResourceManager:GetShardCount() or 0
+            end
+            local color = shards < 3 and "FF4444" or "9482C9"
+            self.ShardCount:SetText("|cFF" .. color .. shards .. " shards|r")
+            if self.HappinessIcon then self.HappinessIcon:Hide() end
         end
-        local color = shards < 3 and "FF4444" or "9482C9"
-        self.ShardCount:SetText("|cFF" .. color .. shards .. " shards|r")
     end
 
     -- === Decision de IA ===

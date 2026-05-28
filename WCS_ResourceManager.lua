@@ -127,6 +127,11 @@ function WCS_ResourceManager:GetShardCount()
     return self.Cache.soulShards or 0
 end
 
+function WCS_ResourceManager:GetAmmoCount()
+    -- Slot 0 is AmmoSlot in 1.12
+    return GetInventoryItemCount("player", 0) or 0
+end
+
 -- Retorna bag, slot de la mejor Healthstone disponible
 function WCS_ResourceManager:GetBestHealthstone()
     local ranks = {"Major", "MajorBase", "Greater", "Lesser", "Minor"}

@@ -14,6 +14,11 @@ local UPDATE_INTERVAL = 1.0
 function WCS_WarlockResources:Initialize()
     if panel then return end
     
+    local _, englishClass = UnitClass("player")
+    if englishClass == "HUNTER" then
+        return -- Este panel es exclusivo de Brujos (shards, soulstones)
+    end
+    
     panel = CreateFrame("Frame", "WCS_WarlockResourcesFrame", WCS_ClanUI.MainFrame.content)
     panel:SetAllPoints(WCS_ClanUI.MainFrame.content)
     panel:Hide()

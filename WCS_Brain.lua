@@ -20,6 +20,13 @@ WCS_Brain.VERSION = "9.3.0" -- [God-Tier] Restoration
 WCS_Brain.ENABLED = true
 WCS_Brain.DEBUG = false
 
+-- Restricción de Clase Global
+local _, playerClass = UnitClass("player")
+if playerClass ~= "WARLOCK" and playerClass ~= "HUNTER" then
+    WCS_Brain.ENABLED = false
+    DEFAULT_CHAT_FRAME:AddMessage("|cFF999999[WCS_Brain]|r Desactivado. Este AddOn solo funciona en Brujos y Cazadores.")
+end
+
 -- ===========================================
 -- FUNCIONES HELPER PARA COMPATIBILIDAD LUA 5.0
 -- ===========================================
@@ -365,6 +372,22 @@ WCS_Brain.DemonKnowledge = {
             ["Spell Lock"] = {type = "interrupt", priority = 98}
         },
         role = "anti_caster"
+    },
+    hunter_tank = {
+        abilities = {
+            ["Growl"] = {type = "defense", priority = 90},
+            ["Cower"] = {type = "survival", priority = 80},
+            ["Bite"] = {type = "offense", priority = 50}
+        },
+        role = "tank"
+    },
+    hunter_dps = {
+        abilities = {
+            ["Claw"] = {type = "offense", priority = 70},
+            ["Bite"] = {type = "offense", priority = 65},
+            ["Dash"] = {type = "utility", priority = 80}
+        },
+        role = "melee_dps"
     }
 }
 
@@ -411,6 +434,16 @@ WCS_Brain.Pet = {
 -- Detectar tipo de mascota por habilidades de la action bar
 function WCS_Brain:DetectPetType()
     if not UnitExists("pet") then return nil end
+    
+    local _, englishClass = UnitClass("player")
+    if englishClass == "HUNTER" then
+        local family = UnitCreatureFamily("pet")
+        -- Familias Tank/Defensivas por defecto
+        if family == "Bear" or family == "Boar" or family == "Turtle" or family == "Gorilla" or family == "Crab" then
+            return "hunter_tank"
+        end
+        return "hunter_dps"
+    end
     
     -- Verificar habilidades en la pet action bar
     -- Slot 1-10 son las acciones de mascota
@@ -573,6 +606,22 @@ function WCS_Brain:UpdateContext()
         
         -- Detectar tipo de mascota por habilidades (mas confiable que por nombre)
         ctx.pet.type = self:DetectPetType()
+        
+        -- CAZADOR: Gestor de Felicidad (Happiness)
+        local _, englishClass = UnitClass("player")
+        if englishClass == "HUNTER" and GetPetHappiness then
+            local happiness = GetPetHappiness()
+            ctx.pet.happiness = happiness
+            
+            -- Sistema de alerta de hambre (1 = Infeliz, 2 = Contento, 3 = Feliz)
+            if happiness and happiness < 3 then
+                local now = getTime()
+                if not self.PetAI.lastHungerWarning or (now - self.PetAI.lastHungerWarning) > 120 then
+                    DEFAULT_CHAT_FRAME:AddMessage("|cFFFF0000[WCS Brain]|r Tu mascota esta hambrienta o infeliz. ¡Usa Alimentar Mascota para no perder DPS!")
+                    self.PetAI.lastHungerWarning = now
+                end
+            end
+        end
     end
     
     self:DeterminePhase()
@@ -618,7 +667,16 @@ WCS_Brain.PetAbilityCooldowns = {
     -- Imp
     ["Fire Shield"] = 30,
     ["Phase Shift"] = 1,
-    ["Blood Pact"] = 0
+    ["Blood Pact"] = 0,
+    -- Hunter Pets
+    ["Growl"] = 5,
+    ["Cower"] = 10,
+    ["Bite"] = 10,
+    ["Claw"] = 0,
+    ["Dash"] = 30,
+    ["Dive"] = 30,
+    ["Screech"] = 4,
+    ["Furious Howl"] = 10
 }
 WCS_Brain.PetCooldowns = {}
 
@@ -709,6 +767,14 @@ function WCS_Brain:PetAIThink()
         end
     end
     
+    -- Hunter Pet: Growl si el cazador tiene aggro
+    if not action and (ctx.pet.type == "hunter_tank" or ctx.pet.type == "hunter_dps") and ctx.target.exists and ctx.target.isHostile then
+        if self:PlayerHasAggro() and not self:IsPetAbilityOnCooldown("Growl") then
+            action = "Growl"
+            reason = "Recuperar aggro (Cazador)"
+        end
+    end
+    
     -- === PRIORIDAD 4: UTILIDAD ===
     -- Felhunter: Devour Magic si el warlock tiene debuff magico
     if not action and ctx.pet.type == "felhunter" then
@@ -744,6 +810,14 @@ function WCS_Brain:PetAIThink()
         if not self:IsPetAbilityOnCooldown("Phase Shift") then
             action = "Phase Shift"
             reason = "Escapar de peligro"
+        end
+    end
+    
+    -- Hunter Pet: Cower si la mascota esta con baja vida en combate para que el cazador reciba el golpe
+    if not action and (ctx.pet.type == "hunter_tank" or ctx.pet.type == "hunter_dps") and ctx.pet.healthPct < 35 and ctx.player.inCombat then
+        if not self:IsPetAbilityOnCooldown("Cower") then
+            action = "Cower"
+            reason = "Supervivencia - Perder aggro"
         end
     end
     
