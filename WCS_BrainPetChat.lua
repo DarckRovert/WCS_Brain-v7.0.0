@@ -245,7 +245,25 @@ end
 -- ============================================================================
 function WCS_BrainPetChat:OnEnterCombat()
     if not self.enabled or not self.currentPet then return end
-    self:Say(self.currentPet, "onCombat")
+    
+    -- "Naked Warlock" Check (Buff Reminder)
+    local hasArmor = false
+    for i=1, 32 do
+        local buff = UnitBuff("player", i)
+        if not buff then break end
+        if string.find(buff, "Spell_Shadow_DemonArmor") or string.find(buff, "Spell_Shadow_FelArmour") or string.find(buff, "Spell_Shadow_RequireMelee") then
+            hasArmor = true
+            break
+        end
+    end
+    
+    if not hasArmor then
+        UIErrorsFrame:AddMessage("|cFFFFaa00["..self.currentPet.."]|r ¡Amo, vas a la batalla sin armadura demoníaca!", 1.0, 1.0, 0.0, 1.0, 3)
+        PlaySound("RaidWarning")
+        self:SendChat("¡Amo, te olvidaste la Armadura Demoníaca! ¡Te van a hacer trizas!")
+    else
+        self:Say(self.currentPet, "onCombat")
+    end
 end
 
 function WCS_BrainPetChat:OnLeaveCombat()
