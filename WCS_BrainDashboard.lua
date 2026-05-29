@@ -1,3 +1,4 @@
+if WCS_Brain and WCS_Brain.ENABLED == false then return end
 -- WCS_BrainDashboard.lua
 -- Dashboard de Rendimiento en Tiempo Real para WCS_Brain v6.9.0
 -- Muestra métricas de CPU, memoria, eventos, y estado del addon

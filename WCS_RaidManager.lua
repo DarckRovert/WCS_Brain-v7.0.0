@@ -8,6 +8,8 @@
     - Agregado UIPanelScrollFrameTemplate para barra de scroll visible
     - Corregido RAID_CLASS_COLORS con claves en MAYÚSCULAS
 ]]--
+if WCS_Brain and WCS_Brain.ENABLED == false then return end
+
 
 WCS_RaidManager = WCS_RaidManager or {}
 

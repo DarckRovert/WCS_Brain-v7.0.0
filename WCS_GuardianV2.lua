@@ -1,3 +1,4 @@
+if WCS_Brain and WCS_Brain.ENABLED == false then return end
 -- Guardian V2: Sistema mejorado con rotacion de habilidades
 -- Este archivo sobrescribe GuardianDefend con mejor deteccion
 

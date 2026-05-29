@@ -9,6 +9,8 @@
     - WCS_BrainAI (Sistema Base)
     - WCS_BrainPetAI (Control de Mascota)
 ]]--
+if WCS_Brain and WCS_Brain.ENABLED == false then return end
+
 
 WCS_BrainCombatController = WCS_BrainCombatController or {}
 local Controller = WCS_BrainCombatController

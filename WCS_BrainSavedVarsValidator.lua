@@ -6,6 +6,8 @@
     Valida y repara SavedVariables corruptas, migra entre versiones,
     y asegura la integridad de los datos guardados.
 ]]--
+if WCS_Brain and WCS_Brain.ENABLED == false then return end
+
 
 WCS_BrainSavedVarsValidator = WCS_BrainSavedVarsValidator or {}
 local Validator = WCS_BrainSavedVarsValidator

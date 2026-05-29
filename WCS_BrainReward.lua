@@ -4,6 +4,8 @@
     
     Calcula recompensas inmediatas y finales para el aprendizaje
 ]]--
+if WCS_Brain and WCS_Brain.ENABLED == false then return end
+
 
 WCS_BrainReward = WCS_BrainReward or {}
 WCS_BrainReward.VERSION = "6.4.2"

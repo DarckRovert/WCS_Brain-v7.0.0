@@ -6,6 +6,8 @@
     
     Autor: Elnazzareno (DarckRovert)
 ]]--
+if WCS_Brain and WCS_Brain.ENABLED == false then return end
+
 
 WCS_BrainTutorialUI = WCS_BrainTutorialUI or {}
 WCS_BrainTutorialUI.frame = nil

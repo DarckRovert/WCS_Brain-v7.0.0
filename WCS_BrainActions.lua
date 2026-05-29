@@ -6,6 +6,8 @@
     Total: 30 acciones (29 hechizos + WAIT)
     NO incluye acciones de mascota (manejadas por WCS_BrainPetAI)
 ]]--
+if WCS_Brain and WCS_Brain.ENABLED == false then return end
+
 
 WCS_BrainActions = WCS_BrainActions or {}
 WCS_BrainActions.VERSION = "6.4.2"

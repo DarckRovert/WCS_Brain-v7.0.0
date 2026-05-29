@@ -3,6 +3,8 @@
     Compatible con Lua 5.0 (WoW 1.12 / Turtle WoW)
     Version 6.4.2 - Boton mejorado con luz indicadora y pulso
 ]]--
+if WCS_Brain and WCS_Brain.ENABLED == false then return end
+
 
 WCS_BrainPetUI = WCS_BrainPetUI or {}
 WCS_BrainPetUI.VERSION = "6.4.2"

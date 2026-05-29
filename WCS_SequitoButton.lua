@@ -3,6 +3,8 @@
     El botón más hermoso jamás creado
     Compatible con Lua 5.0 (WoW 1.12 / Turtle WoW)
 ]]--
+if WCS_Brain and WCS_Brain.ENABLED == false then return end
+
 
 function WCS_BrainUI:CreateSequitoButton(section)
     -- ========================================================================

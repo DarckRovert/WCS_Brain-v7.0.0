@@ -7,6 +7,8 @@
     Este módulo agrega limpieza automática de cooldowns expirados
     para prevenir crecimiento indefinido de la tabla WCS_Brain.Cooldowns
 ]]--
+if WCS_Brain and WCS_Brain.ENABLED == false then return end
+
 
 -- Verificar que WCS_Brain esté cargado
 if not WCS_Brain then

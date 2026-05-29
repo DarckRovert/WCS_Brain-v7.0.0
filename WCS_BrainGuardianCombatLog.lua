@@ -7,6 +7,8 @@
     Este archivo implementa un sistema de detección de atacantes en tiempo real
     usando el CombatLog para mejorar el modo Guardián.
 ]]--
+if WCS_Brain and WCS_Brain.ENABLED == false then return end
+
 
 if not WCS_BrainPetAI then
     DEFAULT_CHAT_FRAME:AddMessage("|cFFFF0000[Guardian CombatLog]|r ERROR: WCS_BrainPetAI no encontrado")

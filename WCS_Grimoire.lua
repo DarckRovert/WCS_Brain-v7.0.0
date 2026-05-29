@@ -2,6 +2,8 @@
     WCS_Grimoire.lua
     Grimorio de Brujo - Base de datos de hechizos y rotaciones
 ]]--
+if WCS_Brain and WCS_Brain.ENABLED == false then return end
+
 
 WCS_Grimoire = WCS_Grimoire or {}
 

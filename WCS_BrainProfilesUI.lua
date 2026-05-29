@@ -2,6 +2,8 @@
     WCS_BrainProfilesUI.lua - Interfaz Gráfica para Gestor de Perfiles
     Compatible con Lua 5.0 (WoW 1.12 / Turtle WoW)
 ]]--
+if WCS_Brain and WCS_Brain.ENABLED == false then return end
+
 
 WCS_BrainProfilesUI = WCS_BrainProfilesUI or {}
 WCS_BrainProfilesUI.VERSION = "1.0.0"

@@ -1,3 +1,4 @@
+if WCS_Brain and WCS_Brain.ENABLED == false then return end
 -- WCS_BrainDashboard_Test.lua
 -- Script de prueba para verificar que el Dashboard puede mostrar datos
 

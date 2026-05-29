@@ -1,3 +1,4 @@
+if WCS_Brain and WCS_Brain.ENABLED == false then return end
 -- WCS_BrainAutoProfiles.lua
 -- Sistema de Perfiles Automáticos para WCS_Brain
 -- Detecta la situación del jugador y cambia el perfil automáticamente

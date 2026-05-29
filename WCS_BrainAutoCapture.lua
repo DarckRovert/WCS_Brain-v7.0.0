@@ -3,6 +3,8 @@
     Compatible con Lua 5.0 (Turtle WoW)
     Version: 6.4.2 - Sin spam de mensajes
 ]]--
+if WCS_Brain and WCS_Brain.ENABLED == false then return end
+
 
 WCS_BrainAutoCapture = WCS_BrainAutoCapture or {}
 WCS_BrainAutoCapture.VERSION = "6.4.2"

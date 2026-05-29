@@ -1,3 +1,4 @@
+if WCS_Brain and WCS_Brain.ENABLED == false then return end
 ﻿--[[
     WCS_DecisionEngine.lua - Elite Tactical Engine v9.3.0 (Multi-Class)
     Compatible con Lua 5.0 (WoW 1.12 / Turtle WoW)

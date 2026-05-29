@@ -1,3 +1,4 @@
+if WCS_Brain and WCS_Brain.ENABLED == false then return end
 
 -- ============================================================================
 -- SOPORTE EXTENSIBLE PARA NUEVAS MASCOTAS Y HABILIDADES

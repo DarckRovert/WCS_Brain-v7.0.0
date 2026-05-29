@@ -5,6 +5,8 @@
     Provee una interfaz unificada para el manejo de eventos, reduciendo 
     la necesidad de múltiples frames invisibles y mejorando el rendimiento.
 ]]--
+if WCS_Brain and WCS_Brain.ENABLED == false then return end
+
 
 WCS_EventManager = WCS_EventManager or {}
 WCS_EventManager.VERSION = "1.0.0"

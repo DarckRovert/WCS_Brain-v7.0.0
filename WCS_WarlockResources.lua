@@ -4,6 +4,8 @@
     
     Tracking de Soul Shards, Healthstones, Soulstones, etc.
 ]]--
+if WCS_Brain and WCS_Brain.ENABLED == false then return end
+
 
 WCS_WarlockResources = WCS_WarlockResources or {}
 

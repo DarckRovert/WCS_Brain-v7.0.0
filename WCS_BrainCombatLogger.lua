@@ -6,6 +6,8 @@
     Este archivo captura eventos del combat log y los envía a WCS_BrainMetrics
     para que el sistema de aprendizaje pueda analizar el rendimiento.
 ]]--
+if WCS_Brain and WCS_Brain.ENABLED == false then return end
+
 
 WCS_BrainCombatLogger = WCS_BrainCombatLogger or {}
 local Logger = WCS_BrainCombatLogger

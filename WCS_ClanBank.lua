@@ -8,6 +8,8 @@
     - Corregido GetItemInfo(link) → extraer itemID del link con string.find
     - Columnas de items ajustadas a 310px cada una (suma = 10+310+10+310+10 = 650 < 700 ✓)
 ]]--
+if WCS_Brain and WCS_Brain.ENABLED == false then return end
+
 
 WCS_ClanBank = WCS_ClanBank or {}
 

@@ -15,6 +15,8 @@
     incluyendo gestión de miembros, recursos de brujo, raids, estadísticas,
     y mucho más.
 ]]--
+if WCS_Brain and WCS_Brain.ENABLED == false then return end
+
 
 -- Namespace global
 WCS_ClanUI = WCS_ClanUI or {}

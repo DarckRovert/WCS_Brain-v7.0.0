@@ -1,3 +1,4 @@
+if WCS_Brain and WCS_Brain.ENABLED == false then return end
 --[[
 WCS_BrainMajorDemonAlerts.lua v1.0.0
 Sistema de Alertas Visuales para Demonios Mayores

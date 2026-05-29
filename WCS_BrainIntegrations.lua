@@ -9,6 +9,8 @@
     - Unit Frames (Discord Unit Frames, etc.)
     - Casting Bars (Quartz, etc.)
 ]]--
+if WCS_Brain and WCS_Brain.ENABLED == false then return end
+
 
 WCS_BrainIntegrations = WCS_BrainIntegrations or {}
 WCS_BrainIntegrations.VERSION = "9.3.0"

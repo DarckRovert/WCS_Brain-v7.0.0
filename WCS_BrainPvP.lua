@@ -6,6 +6,8 @@
     
     Autor: Elnazzareno (DarckRovert)
 ]]--
+if WCS_Brain and WCS_Brain.ENABLED == false then return end
+
 
 WCS_BrainPvP = WCS_BrainPvP or {}
 WCS_BrainPvP.VERSION = "6.6.0"

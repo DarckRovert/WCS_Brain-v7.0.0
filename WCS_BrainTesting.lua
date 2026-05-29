@@ -8,6 +8,8 @@
     - Métricas de precisión de IA
     - Testing de regresión
 ]]--
+if WCS_Brain and WCS_Brain.ENABLED == false then return end
+
 
 WCS_BrainTesting = WCS_BrainTesting or {}
 WCS_BrainTesting.VERSION = "6.4.2"

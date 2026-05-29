@@ -9,6 +9,8 @@
     - Win rate por tipo de enemigo
     - Análisis de patrones de combate
 ]]--
+if WCS_Brain and WCS_Brain.ENABLED == false then return end
+
 
 WCS_BrainMetrics = WCS_BrainMetrics or {}
 WCS_BrainMetrics.VERSION = "6.4.2"

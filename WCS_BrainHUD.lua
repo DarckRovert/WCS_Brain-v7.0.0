@@ -5,6 +5,8 @@
     Proporciona información visual inmediata cerca del personaje sobre
     el estado de la IA, recursos (shards) y decisiones.
 ]]--
+if WCS_Brain and WCS_Brain.ENABLED == false then return end
+
 
 WCS_BrainHUD = WCS_BrainHUD or {}
 WCS_BrainHUD.VERSION = "1.0.0"

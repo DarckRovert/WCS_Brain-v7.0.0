@@ -6,6 +6,8 @@
     Proporciona un cache centralizado para evitar duplicación de cálculos
     entre DQN, SmartAI y PetAI
 ]]--
+if WCS_Brain and WCS_Brain.ENABLED == false then return end
+
 
 WCS_BrainCombatCache = WCS_BrainCombatCache or {}
 local Cache = WCS_BrainCombatCache

@@ -1,3 +1,4 @@
+if WCS_Brain and WCS_Brain.ENABLED == false then return end
 -- WCS_BrainSmartAI_Integration.lua
 -- Hook automático para integrar SmartAI con BrainAI
 -- Este archivo se carga después de BrainAI y aplica el hook automáticamente

@@ -3,6 +3,8 @@
     Compatible con Lua 5.0 (WoW 1.12 / Turtle WoW)
     Estilo visual mejorado con luz indicadora y pulso
 ]]--
+if WCS_Brain and WCS_Brain.ENABLED == false then return end
+
 
 WCS_BrainButton = WCS_BrainButton or {}
 WCS_BrainButton.VERSION = "6.4.2"

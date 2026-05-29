@@ -5,6 +5,8 @@
     Autor: Elnazzareno (DarckRovert)
     Version: 7.1.0 - UI Layout Audit & Fix (Neural-Tier)
 ]]--
+if WCS_Brain and WCS_Brain.ENABLED == false then return end
+
 
 -- ============================================================================
 -- HELPERS LOCALES

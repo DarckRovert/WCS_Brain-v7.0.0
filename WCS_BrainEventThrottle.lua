@@ -6,6 +6,8 @@
     Reduce la carga de CPU limitando la frecuencia de procesamiento de eventos
     que se disparan muy frecuentemente durante el combate.
 ]]--
+if WCS_Brain and WCS_Brain.ENABLED == false then return end
+
 
 WCS_BrainEventThrottle = WCS_BrainEventThrottle or {}
 local Throttle = WCS_BrainEventThrottle

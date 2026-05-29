@@ -13,6 +13,8 @@
     - Priorización de atacantes por DPS
     - Mejor integración con GuardianEnhanced
 ]]--
+if WCS_Brain and WCS_Brain.ENABLED == false then return end
+
 
 if not WCS_BrainCombatCache then
     DEFAULT_CHAT_FRAME:AddMessage("|cFFFF0000[Guardian Cache Ext]|r ERROR: WCS_BrainCombatCache no encontrado")

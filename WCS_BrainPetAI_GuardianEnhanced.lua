@@ -14,6 +14,8 @@
     - Agregado soporte para Imp (Fire Shield automático)
     - Todas las mascotas ahora tienen habilidades específicas en modo Guardián
 ]]--
+if WCS_Brain and WCS_Brain.ENABLED == false then return end
+
 
 if not WCS_BrainPetAI then
     DEFAULT_CHAT_FRAME:AddMessage("|cFFFF0000[Guardian Enhanced]|r ERROR: WCS_BrainPetAI no encontrado")

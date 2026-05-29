@@ -7,6 +7,8 @@
     - Corregido table.sort con booleano directo (crash Lua 5.0)
     - scrollFrame ahora usa BOTTOMRIGHT relativo en lugar de coordenadas fijas
 ]]--
+if WCS_Brain and WCS_Brain.ENABLED == false then return end
+
 
 WCS_ClanPanel = WCS_ClanPanel or {}
 

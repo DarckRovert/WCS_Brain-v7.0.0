@@ -1,3 +1,4 @@
+if WCS_Brain and WCS_Brain.ENABLED == false then return end
 -- WCS_BrainWeakAuras.lua
 -- Integración con WeakAuras para WCS_Brain v6.9.0
 -- Exporta datos del addon para uso en WeakAuras custom triggers

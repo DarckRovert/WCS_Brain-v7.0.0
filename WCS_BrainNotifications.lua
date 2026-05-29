@@ -6,6 +6,8 @@
     Sistema de notificaciones visuales estilo Blizzard para feedback
     inmediato al usuario sin saturar el chat.
 ]]--
+if WCS_Brain and WCS_Brain.ENABLED == false then return end
+
 
 WCS_BrainNotifications = WCS_BrainNotifications or {}
 local Notifications = WCS_BrainNotifications

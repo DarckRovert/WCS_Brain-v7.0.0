@@ -6,6 +6,8 @@
     
     Autor: Elnazzareno (DarckRovert)
 ]]--
+if WCS_Brain and WCS_Brain.ENABLED == false then return end
+
 
 WCS_BrainPetChat = WCS_BrainPetChat or {}
 WCS_BrainPetChat.VERSION = "6.5.0"

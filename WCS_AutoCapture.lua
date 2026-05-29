@@ -1,3 +1,4 @@
+if WCS_Brain and WCS_Brain.ENABLED == false then return end
 ﻿--[[
     WCS_AutoCapture.lua - Autonomous Journalist v9.3.0
     Compatible con Lua 5.0 (WoW 1.12 / Turtle WoW)

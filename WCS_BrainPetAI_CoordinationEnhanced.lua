@@ -7,6 +7,8 @@
     Este archivo extiende WCS_BrainPetAI con mejor coordinación
     con las acciones del jugador detectadas por CombatController.
 ]]--
+if WCS_Brain and WCS_Brain.ENABLED == false then return end
+
 
 if not WCS_BrainPetAI then
     DEFAULT_CHAT_FRAME:AddMessage("|cFFFF0000[PetAI Coordination]|r ERROR: WCS_BrainPetAI no encontrado")

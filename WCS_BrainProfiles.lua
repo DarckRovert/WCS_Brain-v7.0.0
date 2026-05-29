@@ -9,6 +9,8 @@
     Twitch: twitch.tv/darckrovert
     Kick: kick.com/darckrovert
 ]]--
+if WCS_Brain and WCS_Brain.ENABLED == false then return end
+
 
 WCS_BrainProfiles = WCS_BrainProfiles or {}
 WCS_BrainProfiles.VERSION = "1.0.0"

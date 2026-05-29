@@ -1,3 +1,4 @@
+if WCS_Brain and WCS_Brain.ENABLED == false then return end
 ﻿--[[
     WCS_BrainAI.lua - Sistema de IA Inteligente v6.7.0
     Compatible con Lua 5.0 (WoW 1.12 / Turtle WoW)

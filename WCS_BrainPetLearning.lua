@@ -1,3 +1,4 @@
+if WCS_Brain and WCS_Brain.ENABLED == false then return end
 -- ============================================================================
 -- WCS_BrainPetLearning.lua v6.4.2
 -- Sistema de Aprendizaje Mejorado para Mascota

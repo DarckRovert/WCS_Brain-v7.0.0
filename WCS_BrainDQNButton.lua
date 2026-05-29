@@ -1,3 +1,4 @@
+if WCS_Brain and WCS_Brain.ENABLED == false then return end
 -- WCS_BrainDQNButton.lua
 -- Boton flotante para el sistema DQN
 -- Compatible con Lua 5.0 (WoW 1.12) - SOLO ASCII

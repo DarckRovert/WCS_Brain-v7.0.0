@@ -3,6 +3,8 @@
     Compatible con Lua 5.0 (WoW 1.12 / Turtle WoW)
     Version: 6.4.2 - Optimización de Rendimiento
 ]]--
+if WCS_Brain and WCS_Brain.ENABLED == false then return end
+
 
 WCS_Profiler = WCS_Profiler or {}
 WCS_Profiler.VERSION = "6.4.2"

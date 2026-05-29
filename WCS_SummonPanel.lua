@@ -9,6 +9,8 @@
     - Reemplazado date() por GetTime() (no existe en WoW 1.12)
     - Botones anclados a BOTTOM en lugar de TOPLEFT -420 hardcoded
 ]]--
+if WCS_Brain and WCS_Brain.ENABLED == false then return end
+
 
 WCS_SummonPanel = WCS_SummonPanel or {}
 

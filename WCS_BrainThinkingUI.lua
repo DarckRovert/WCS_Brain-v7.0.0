@@ -1,3 +1,4 @@
+if WCS_Brain and WCS_Brain.ENABLED == false then return end
 -- WCS_BrainThinkingUI.lua
 -- UI que muestra el "pensamiento" del Brain en tiempo real
 -- Version: 6.5.0

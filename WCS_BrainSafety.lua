@@ -6,6 +6,8 @@
     Previene crashes y lag extremo mediante límites de seguridad
     y limpieza automática cuando se exceden.
 ]]--
+if WCS_Brain and WCS_Brain.ENABLED == false then return end
+
 
 WCS_BrainSafety = WCS_BrainSafety or {}
 local Safety = WCS_BrainSafety

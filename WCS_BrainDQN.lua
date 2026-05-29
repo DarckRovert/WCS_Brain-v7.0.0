@@ -3,6 +3,8 @@
     Compatible con Lua 5.0 (WoW 1.12 / Turtle WoW)
     Version: 6.7.0 - Sin mensajes DEBUG
 ]]--
+if WCS_Brain and WCS_Brain.ENABLED == false then return end
+
 
 WCS_BrainDQN = WCS_BrainDQN or {}
 WCS_BrainDQN.VERSION = "6.7.0"

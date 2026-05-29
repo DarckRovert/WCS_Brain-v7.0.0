@@ -1,3 +1,4 @@
+if WCS_Brain and WCS_Brain.ENABLED == false then return end
 -- WCS_BrainDashboard_Debug.lua
 -- Script de depuración para el Dashboard
 -- Verifica qué estructuras de datos existen y están disponibles

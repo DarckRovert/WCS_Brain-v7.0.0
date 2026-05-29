@@ -1,3 +1,4 @@
+if WCS_Brain and WCS_Brain.ENABLED == false then return end
 --[[
 WCS_BrainMajorDemons.lua v6.5.0
 Sistema de Deteccion y Manejo de Demonios Mayores (Infernal y Doomguard)

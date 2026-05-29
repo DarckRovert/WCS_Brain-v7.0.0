@@ -5,6 +5,8 @@
     v2.1 - Corregida deteccion de DoTs usando texturas reales
     No depende de WCS_Brain.Context
 ]]--
+if WCS_Brain and WCS_Brain.ENABLED == false then return end
+
 
 WCS_BrainState = WCS_BrainState or {}
 WCS_BrainState.VERSION = "6.6.0"

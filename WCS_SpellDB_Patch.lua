@@ -7,6 +7,8 @@
     
     Autor: Elnazzareno (DarckRovert)
 ]]--
+if WCS_Brain and WCS_Brain.ENABLED == false then return end
+
 
 -- ============================================================================
 -- CACHE DE NOMBRES NORMALIZADOS

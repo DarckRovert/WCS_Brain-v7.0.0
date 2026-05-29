@@ -7,6 +7,8 @@
     - Eliminado SetWidth(760) en statsBg → ahora relativo (TOPLEFT..TOPRIGHT)
     - Corregida protección de RAID_CLASS_COLORS nil
 ]]--
+if WCS_Brain and WCS_Brain.ENABLED == false then return end
+
 
 WCS_PvPTracker = WCS_PvPTracker or {}
 

@@ -1,3 +1,4 @@
+if WCS_Brain and WCS_Brain.ENABLED == false then return end
 -- Global alias for compatibility (single definition)
 function WCS_Brain_Pet_GetResponse(situation)
     return WCS_Brain.Pet.Social:GetResponse(situation)

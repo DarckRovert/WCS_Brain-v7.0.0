@@ -7,6 +7,8 @@
     
     Funcionalidad REAL — Sin ficcion.
 ]]--
+if WCS_Brain and WCS_Brain.ENABLED == false then return end
+
 
 WCS = WCS or {}
 WCS.ClassRotations = WCS.ClassRotations or {}

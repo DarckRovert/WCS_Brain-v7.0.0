@@ -7,6 +7,8 @@
     
     Autor: Elnazzareno (DarckRovert)
 ]]--
+if WCS_Brain and WCS_Brain.ENABLED == false then return end
+
 
 WCS_BrainDQNUI = WCS_BrainDQNUI or {}
 WCS_BrainDQNUI.VERSION = "6.4.2"

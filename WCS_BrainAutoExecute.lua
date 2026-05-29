@@ -6,6 +6,8 @@
     Este módulo ejecuta automáticamente las decisiones de WCS_Brain
     cuando está en combate, sin necesidad de WCS_DQN.
 ]]--
+if WCS_Brain and WCS_Brain.ENABLED == false then return end
+
 
 WCS_BrainAutoExecute = WCS_BrainAutoExecute or {}
 WCS_BrainAutoExecute.VERSION = "1.0.0"

@@ -10,6 +10,8 @@
     - Efectos de sonido
     - Iconos de estado
 ]]--
+if WCS_Brain and WCS_Brain.ENABLED == false then return end
+
 
 if not WCS_BrainPetAI then
     DEFAULT_CHAT_FRAME:AddMessage("|cFFFF0000[Guardian Alerts]|r ERROR: WCS_BrainPetAI no encontrado")

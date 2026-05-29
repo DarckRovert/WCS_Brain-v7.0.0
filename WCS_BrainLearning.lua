@@ -8,6 +8,8 @@
     - Aprende qué funciona mejor contra cada enemigo
     - Ajusta automáticamente configuración según resultados
 ]]--
+if WCS_Brain and WCS_Brain.ENABLED == false then return end
+
 
 WCS_BrainLearning = WCS_BrainLearning or {}
 WCS_BrainLearning.VERSION = "1.0.0"

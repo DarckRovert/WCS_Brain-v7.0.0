@@ -1,3 +1,4 @@
+if WCS_Brain and WCS_Brain.ENABLED == false then return end
 ﻿--[[
     WCS_SummonManager.lua - Tactical Summoning v9.3.0 (Unified)
     Compatible con Lua 5.0 (WoW 1.12 / Turtle WoW)

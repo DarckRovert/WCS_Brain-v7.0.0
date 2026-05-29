@@ -5,6 +5,8 @@
     Centraliza el rastreo de items importantes (Soul Shards, Healthstones, etc.)
     para evitar múltiples escaneos de bolsa por diferentes módulos.
 ]]--
+if WCS_Brain and WCS_Brain.ENABLED == false then return end
+
 
 WCS_ResourceManager = WCS_ResourceManager or {}
 WCS_ResourceManager.VERSION = "1.0.0"

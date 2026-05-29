@@ -4,6 +4,8 @@
     
     Conecta el DQN con WCS_Brain, WCS_BrainAI y WCS_BrainML
 ]]--
+if WCS_Brain and WCS_Brain.ENABLED == false then return end
+
 
 WCS_BrainIntegration = WCS_BrainIntegration or {}
 WCS_BrainIntegration.VERSION = "6.4.2"

@@ -1,3 +1,4 @@
+if WCS_Brain and WCS_Brain.ENABLED == false then return end
 -- WCS_BrainProfilesEnhanced.lua
 -- Sistema mejorado de perfiles con auto-switch y presets
 -- Version: 6.5.0

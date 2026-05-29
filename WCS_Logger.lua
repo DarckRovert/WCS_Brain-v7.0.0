@@ -1,3 +1,4 @@
+if WCS_Brain and WCS_Brain.ENABLED == false then return end
 ﻿--[[
     WCS_Logger.lua - Forensic Audit v9.3.0 (Hardened)
     Compatible con Lua 5.0 (WoW 1.12 / Turtle WoW)

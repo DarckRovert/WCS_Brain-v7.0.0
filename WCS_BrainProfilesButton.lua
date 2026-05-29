@@ -2,6 +2,8 @@
     WCS_BrainProfilesButton.lua - Boton Flotante para Gestor de Perfiles
     Compatible con Lua 5.0 (WoW 1.12 / Turtle WoW)
 ]]--
+if WCS_Brain and WCS_Brain.ENABLED == false then return end
+
 
 WCS_BrainProfilesButton = WCS_BrainProfilesButton or {}
 WCS_BrainProfilesButton.VERSION = "6.4.2"

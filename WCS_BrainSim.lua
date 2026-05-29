@@ -5,6 +5,8 @@
     Este módulo calcula el valor real (DPS/DPCT) de los hechizos basándose
     en sus tooltips y el estado actual del objetivo.
 ]]--
+if WCS_Brain and WCS_Brain.ENABLED == false then return end
+
 
 WCS_BrainSim = WCS_BrainSim or {}
 WCS_BrainSim.VERSION = "1.0.0"

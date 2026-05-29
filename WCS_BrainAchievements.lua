@@ -6,6 +6,8 @@
     
     Autor: Elnazzareno (DarckRovert)
 ]]--
+if WCS_Brain and WCS_Brain.ENABLED == false then return end
+
 
 WCS_BrainAchievements = WCS_BrainAchievements or {}
 WCS_BrainAchievements.VERSION = "6.5.0"

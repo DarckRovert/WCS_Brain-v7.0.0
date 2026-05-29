@@ -7,6 +7,8 @@
     - Eliminados SetWidth(760) que desbordaban el frame 700px
     - Corregida iteración pairs(combatStats.spellsCast) → compatible Lua 5.0
 ]]--
+if WCS_Brain and WCS_Brain.ENABLED == false then return end
+
 
 WCS_Statistics = WCS_Statistics or {}
 

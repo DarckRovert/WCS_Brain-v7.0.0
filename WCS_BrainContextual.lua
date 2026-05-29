@@ -8,6 +8,8 @@
     - Perfiles de juego personalizables
     - Detección automática de contexto
 ]]--
+if WCS_Brain and WCS_Brain.ENABLED == false then return end
+
 
 WCS_BrainContextual = WCS_BrainContextual or {}
 WCS_BrainContextual.VERSION = "6.4.2"

@@ -1,3 +1,4 @@
+if WCS_Brain and WCS_Brain.ENABLED == false then return end
 -- WCS_BrainSmartAI.lua
 -- Sistema de IA Ultra-Inteligente para WCS_Brain
 -- Mejora las decisiones del addon con análisis avanzado de combate

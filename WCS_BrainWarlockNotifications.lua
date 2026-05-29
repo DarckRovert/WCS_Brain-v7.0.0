@@ -10,6 +10,8 @@
     - Healthstones disponibles
     - Buffs importantes
 ]]--
+if WCS_Brain and WCS_Brain.ENABLED == false then return end
+
 
 WCS_BrainWarlockNotif = WCS_BrainWarlockNotif or {}
 local WarlockNotif = WCS_BrainWarlockNotif

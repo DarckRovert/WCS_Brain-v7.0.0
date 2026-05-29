@@ -1,3 +1,4 @@
+if WCS_Brain and WCS_Brain.ENABLED == false then return end
 -- WCS_BrainTutorialButton.lua
 -- Boton flotante para acceder al tutorial rapidamente
 -- Version: 6.5.0

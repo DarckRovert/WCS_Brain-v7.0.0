@@ -1,3 +1,4 @@
+if WCS_Brain and WCS_Brain.ENABLED == false then return end
 -- WCS_BrainThinkingButton.lua
 -- Boton flotante para el sistema Thinking UI
 -- Compatible con Lua 5.0 (WoW 1.12) - SOLO ASCII

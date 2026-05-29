@@ -14,6 +14,8 @@
     - Integración con WCS_BrainMetrics
     - Sistema de logros basado en DPS
 ]]--
+if WCS_Brain and WCS_Brain.ENABLED == false then return end
+
 
 WCS_BrainTerrorMeter = WCS_BrainTerrorMeter or {}
 WCS_BrainTerrorMeter.VERSION = "1.0"

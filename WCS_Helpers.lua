@@ -36,6 +36,14 @@
 WCS_Helpers = WCS_Helpers or {}
 WCS_Helpers.VERSION = "6.6.0"
 
+WCS_Brain = WCS_Brain or {}
+local _, wcs_playerClass = UnitClass("player")
+if wcs_playerClass ~= "WARLOCK" and wcs_playerClass ~= "HUNTER" then
+    WCS_Brain.ENABLED = false
+else
+    WCS_Brain.ENABLED = true
+end
+
 function WCS_Helpers.TableCount(t)
     if not t then return 0 end
     if table.getn then return table.getn(t) end

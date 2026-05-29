@@ -4,6 +4,8 @@
     
     Parte del sistema Cerebro Central Independiente
 ]]--
+if WCS_Brain and WCS_Brain.ENABLED == false then return end
+
 
 WCS_SpellDB = WCS_SpellDB or {}
 

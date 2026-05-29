@@ -1,3 +1,4 @@
+if WCS_Brain and WCS_Brain.ENABLED == false then return end
 -- WCS_BrainBossMods.lua
 -- Integración con BigWigs y DBM para WCS_Brain v6.9.0
 -- Reacciona automáticamente a alertas de boss mods

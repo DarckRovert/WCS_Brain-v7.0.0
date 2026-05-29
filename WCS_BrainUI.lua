@@ -8,6 +8,8 @@
     Twitch: twitch.tv/darckrovert
     Kick: kick.com/darckrovert
 ]]--
+if WCS_Brain and WCS_Brain.ENABLED == false then return end
+
 
 WCS_BrainUI = WCS_BrainUI or {}
 WCS_BrainUI.VERSION = "9.3.0"

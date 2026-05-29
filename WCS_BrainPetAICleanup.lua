@@ -7,6 +7,8 @@
     Este módulo agrega limpieza automática de cooldowns de mascotas
     para prevenir crecimiento indefinido de la tabla PetAI.cooldowns
 ]]--
+if WCS_Brain and WCS_Brain.ENABLED == false then return end
+
 
 -- Verificar que PetAI esté cargado
 if not PetAI then

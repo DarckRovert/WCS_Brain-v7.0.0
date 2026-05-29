@@ -6,6 +6,8 @@
     
     Autor: Elnazzareno (DarckRovert)
 ]]--
+if WCS_Brain and WCS_Brain.ENABLED == false then return end
+
 
 WCS_BrainMacros = WCS_BrainMacros or {}
 WCS_BrainMacros.VERSION = "6.6.0"

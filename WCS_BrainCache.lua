@@ -8,6 +8,8 @@
     Twitch: twitch.tv/darckrovert
     Kick: kick.com/darckrovert
 ]]--
+if WCS_Brain and WCS_Brain.ENABLED == false then return end
+
 
 WCS_BrainCache = WCS_BrainCache or {}
 WCS_BrainCache.VERSION = "6.6.0"

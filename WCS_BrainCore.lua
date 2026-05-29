@@ -4,6 +4,8 @@
     
     Sistema independiente - no requiere otros módulos WCS
 ]]--
+if WCS_Brain and WCS_Brain.ENABLED == false then return end
+
 
 WCS_BrainCore = WCS_BrainCore or {}
 WCS_BrainCore.VERSION = "6.6.0"

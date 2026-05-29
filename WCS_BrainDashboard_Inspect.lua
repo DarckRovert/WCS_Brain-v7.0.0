@@ -1,3 +1,4 @@
+if WCS_Brain and WCS_Brain.ENABLED == false then return end
 -- WCS_BrainDashboard_Inspect.lua
 -- Inspecciona los valores actuales del Dashboard
 
