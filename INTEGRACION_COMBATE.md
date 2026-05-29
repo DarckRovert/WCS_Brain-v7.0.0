@@ -115,7 +115,8 @@ WCS_BrainCombatController (Coordinador Central)
     │   └── Cooldowns
     │
     ├── Sistema de Emergencia (Prioridad Máxima)
-    │   ├── Salud crítica < 15%
+    │   ├── Salud crítica < 15% (Precognición de Muerte con Voz)
+    │   ├── Oráculo de Fragmentos (Sugiere Drain Soul si Shards < 3)
     │   ├── Mana crítico < 5%
     │   └── Mascota crítica < 10%
     │
@@ -247,6 +248,7 @@ El sistema ahora coordina las acciones del jugador con la mascota:
 - **Fear**: La mascota sabe que el jugador usó Fear
 - **Death Coil**: Indica que el jugador está en peligro
 - **Health Funnel**: La mascota puede ser más agresiva
+- **Naked Warlock (Voice-Over)**: La mascota avisa por audio y chat si entras en combate sin *Demon Armor* o *Demon Skin*.
 
 Esto permite que la mascota adapte su comportamiento según las acciones del jugador.
 
