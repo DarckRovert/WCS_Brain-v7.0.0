@@ -245,13 +245,13 @@ end
 -- ============================================================================
 function WCS_BrainPetChat:OnEnterCombat()
     if not self.enabled or not self.currentPet then return end
-    
-    -- "Naked Warlock" Check (Buff Reminder)
+    -- "Naked Warlock" Check (Buff Reminder para WoW 1.12)
+    -- Demon Skin y Demon Armor usan el icono "Spell_Shadow_RequireMelee" o "Spell_Shadow_DemonArmor"
     local hasArmor = false
     for i=1, 32 do
         local buff = UnitBuff("player", i)
         if not buff then break end
-        if string.find(buff, "Spell_Shadow_DemonArmor") or string.find(buff, "Spell_Shadow_FelArmour") or string.find(buff, "Spell_Shadow_RequireMelee") then
+        if string.find(buff, "Spell_Shadow_RequireMelee") or string.find(buff, "Spell_Shadow_DemonArmor") then
             hasArmor = true
             break
         end
