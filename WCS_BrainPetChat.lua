@@ -245,25 +245,30 @@ end
 -- ============================================================================
 function WCS_BrainPetChat:OnEnterCombat()
     if not self.enabled or not self.currentPet then return end
-    -- "Naked Warlock" Check (Buff Reminder para WoW 1.12)
-    -- Demon Skin y Demon Armor usan el icono "Spell_Shadow_RequireMelee" o "Spell_Shadow_DemonArmor"
-    local hasArmor = false
-    for i=1, 32 do
-        local buff = UnitBuff("player", i)
-        if not buff then break end
-        if string.find(buff, "Spell_Shadow_RequireMelee") or string.find(buff, "Spell_Shadow_DemonArmor") then
-            hasArmor = true
-            break
+    
+    local _, englishClass = UnitClass("player")
+    if englishClass == "WARLOCK" then
+        -- "Naked Warlock" Check (Buff Reminder para WoW 1.12)
+        -- Demon Skin y Demon Armor usan el icono "Spell_Shadow_RequireMelee" o "Spell_Shadow_DemonArmor"
+        local hasArmor = false
+        for i=1, 32 do
+            local buff = UnitBuff("player", i)
+            if not buff then break end
+            if string.find(buff, "Spell_Shadow_RequireMelee") or string.find(buff, "Spell_Shadow_DemonArmor") then
+                hasArmor = true
+                break
+            end
+        end
+        
+        if not hasArmor then
+            UIErrorsFrame:AddMessage("|cFFFFaa00["..self.currentPet.."]|r ¡Amo, vas a la batalla sin armadura demoníaca!", 1.0, 1.0, 0.0, 1.0, 3)
+            PlaySound("RaidWarning")
+            self:SendChat("¡Amo, te olvidaste la Armadura Demoníaca! ¡Te van a hacer trizas!")
+            return
         end
     end
     
-    if not hasArmor then
-        UIErrorsFrame:AddMessage("|cFFFFaa00["..self.currentPet.."]|r ¡Amo, vas a la batalla sin armadura demoníaca!", 1.0, 1.0, 0.0, 1.0, 3)
-        PlaySound("RaidWarning")
-        self:SendChat("¡Amo, te olvidaste la Armadura Demoníaca! ¡Te van a hacer trizas!")
-    else
-        self:Say(self.currentPet, "onCombat")
-    end
+    self:Say(self.currentPet, "onCombat")
 end
 
 function WCS_BrainPetChat:OnLeaveCombat()
