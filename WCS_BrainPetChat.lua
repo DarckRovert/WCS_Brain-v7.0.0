@@ -284,9 +284,26 @@ function WCS_BrainPetChat:Say(petType, situation)
     DEFAULT_CHAT_FRAME:AddMessage(color .. "[" .. petType .. "]|r " .. dialog)
 end
 
+-- Mapeo de sonidos para la Inmersión Auditiva Neural (PlaySound)
+WCS_BrainPetChat.PetSounds = {
+    ["Imp"] = "ImpAttack",
+    ["Voidwalker"] = "VoidWalkerAttack",
+    ["Succubus"] = "SuccubusAttack",
+    ["Felhunter"] = "FelhunterAttack",
+    ["Infernal"] = "InfernalAwaken",
+    ["Doomguard"] = "DoomguardAttack"
+}
+
 function WCS_BrainPetChat:SendChat(text)
     if not self.enabled or not self.currentPet then return end
     local color = self:GetPetColor(self.currentPet) or "|cFFFFaa00"
+    
+    -- Inmersión Auditiva Neural: Reproducir sonido de la mascota
+    local soundStr = self.PetSounds[self.currentPet]
+    if soundStr then
+        PlaySound(soundStr)
+    end
+    
     DEFAULT_CHAT_FRAME:AddMessage(color .. "[" .. self.currentPet .. "]|r " .. text)
 end
 
@@ -551,6 +568,33 @@ SlashCmdList["WCSPETCHAT"] = function(msg)
         DEFAULT_CHAT_FRAME:AddMessage("|cFFFFCC00/brainpetchat on|r - Activar chat")
         DEFAULT_CHAT_FRAME:AddMessage("|cFFFFCC00/brainpetchat off|r - Desactivar chat")
         DEFAULT_CHAT_FRAME:AddMessage("|cFFFFCC00/brainpetchat test|r - Probar chat")
+    end
+end
+
+-- ============================================================================
+-- PRECOGNICIÓN DE MUERTE (CheckHealth)
+-- ============================================================================
+WCS_BrainPetChat.LastHealthWarning = 0
+
+function WCS_BrainPetChat:CheckHealth()
+    if not self.enabled or not self.currentPet or UnitIsDeadOrGhost("player") then return end
+    
+    local hpMax = UnitHealthMax("player")
+    if hpMax == 0 then return end
+    local hpPerc = (UnitHealth("player") / hpMax) * 100
+    
+    if hpPerc < 20 and UnitAffectingCombat("player") then
+        local now = GetTime()
+        if now - self.LastHealthWarning > 30 then -- Cooldown de 30 segundos
+            self.LastHealthWarning = now
+            
+            -- Precognición HUD
+            UIErrorsFrame:AddMessage("|cFFFF0000[PRECOGNICIÓN NEURAL]|r ¡Amo, constantes vitales colapsando! ¡Use Piedra de Salud AHORA!", 1.0, 0.0, 0.0, 1.0, 3)
+            PlaySound("RaidWarning")
+            
+            -- Diálogo de la mascota
+            self:WorldSay(self.currentPet, "onLowHealthPlayer")
+        end
     end
 end
 

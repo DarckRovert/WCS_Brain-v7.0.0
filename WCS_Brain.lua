@@ -1084,10 +1084,16 @@ function WCS_Brain:CheckFiller()
         if self:IsSpellLearned("Shadowburn") and not self:IsSpellOnCooldown("Shadowburn") then
             return {action = "CAST", spell = "Shadowburn", priority = self.Priority.FILLER, reason = "Shadowburn (execute)"}
         end
-        -- Drain Soul para farmear shards si el mob va a morir
-        if ctx.target.healthPct < 10 and self:IsSpellLearned("Drain Soul") then
+        -- Oráculo Predictivo de Fragmentos de Alma
+        if ctx.target.healthPct <= 15 and self:IsSpellLearned("Drain Soul") then
             local shards = WCS_BrainCore and WCS_BrainCore.State.soulShards or 0
-            if shards < 5 then
+            if shards < 3 then
+                local now = GetTime()
+                if not WCS_Brain.LastOracleWhisper or (now - WCS_Brain.LastOracleWhisper) > 10 then
+                    WCS_Brain.LastOracleWhisper = now
+                    UIErrorsFrame:AddMessage("|cFF9482C9[ORÁCULO NEURAL]|r El alma de esta criatura está lista para la cosecha. Usa Drenar Alma.", 0.58, 0.51, 0.79, 1.0, 4)
+                    PlaySound("igQuestFailed")
+                end
                 return {action = "CAST", spell = "Drain Soul", priority = self.Priority.FILLER, reason = "Drain Soul (shard)"}
             end
         end
